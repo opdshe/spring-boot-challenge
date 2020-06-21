@@ -1,5 +1,6 @@
 package com.springboot.challenge.domain.item;
 
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 public class ItemRepositoryTest {
     @Autowired
-    ItemRepository itemRepository;
+    private ItemRepository itemRepository;
+
+    @After
+    public void cleanUp(){
+        itemRepository.deleteAll();
+    }
 
     @Test
     public void Item_등록_확인() {
@@ -29,8 +35,9 @@ public class ItemRepositoryTest {
 
         //when
         List<Item> findItem = itemRepository.findAll();
+        Item savedItem = findItem.get(0);
 
         //then
-        assertThat(findItem.get(0).getName()).isEqualTo("오프화이트신발");
+        assertThat(item.equals(savedItem)).isTrue();
     }
 }

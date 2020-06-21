@@ -1,11 +1,13 @@
 package com.springboot.challenge.domain.item;
 
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 @Getter
+@EqualsAndHashCode
 @NoArgsConstructor
 @Entity
 public class Item {
