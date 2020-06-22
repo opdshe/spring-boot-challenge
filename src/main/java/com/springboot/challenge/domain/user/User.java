@@ -1,6 +1,6 @@
 package com.springboot.challenge.domain.user;
 
-import com.springboot.challenge.domain.order.Order;
+import com.springboot.challenge.domain.order.Orders;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,8 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 public class User {
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     @Column(name = "user_id")
     private Long id;
 
@@ -29,7 +28,7 @@ public class User {
     private String phone;
 
     @OneToMany(mappedBy = "user")
-    private List<Order> orderList = new ArrayList<>();
+    private List<Orders> ordersList = new ArrayList<>();
 
     @Builder
     public User(String name, String address, String email, String phone) {

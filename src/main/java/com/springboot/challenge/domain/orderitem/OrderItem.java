@@ -1,7 +1,7 @@
 package com.springboot.challenge.domain.orderitem;
 
 import com.springboot.challenge.domain.item.Item;
-import com.springboot.challenge.domain.order.Order;
+import com.springboot.challenge.domain.order.Orders;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -15,14 +15,15 @@ public class OrderItem {
     @Column(name = "order_item_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     private Item item;
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    private Order order;
+    private Orders order;
 
+    @Column(name = "order_price")
     private int orderPrice;
 
     private int count;

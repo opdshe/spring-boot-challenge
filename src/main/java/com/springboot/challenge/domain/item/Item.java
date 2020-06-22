@@ -27,6 +27,8 @@ public class Item {
 
     private String thumbnailUrl;
 
+    private int sales;
+
     @Builder
     public Item(String name, int price, int stockQuantity, Category category, String thumbnailUrl) {
         this.name = name;
