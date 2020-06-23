@@ -4,6 +4,10 @@ h1 {
   margin-bottom: 0px;
 }
 
+#nav_upper{
+  float: right;
+  padding-right: 50px;
+}
 #nav_upper a{
   color: black;
 }
@@ -13,10 +17,11 @@ h1 {
 }
 
 #nav_category{
+  position: fixed;
   list-style-type: none;
-  margin-top: 100px;
-  padding: 0;
-  width: 20%;
+  padding-top:100px;
+  width: 10%;
+  height: auto;
   float: left;
   background-color: #ffffff;
 }
@@ -41,9 +46,9 @@ section:after {
 }
 
 article {
-  float: left;
-  padding: 20px;
-  width: 70%;
+  padding-right: 50px;
+  float: right;
+  width: 90%;
   background-color: #ffffff;
 }
 
@@ -52,4 +57,23 @@ article {
     width: 100%;
     height: auto;
   }
+}
+
+.ga09list {
+  margin: 0 auto;
+  font-family: 'Montserrat','Nanum Gothic',sans-serif;
+}
+
+.ga09list ul {
+  zoom: 1;
+  width: 100%;
+  margin-bottom: 0;
+  display: table;
+  font-size: 0;
+}
+.ga09list ul.grid4 > li {
+  display: inline-block;
+  width: 25%;
+  text-align: center;
+  vertical-align: top;
 }

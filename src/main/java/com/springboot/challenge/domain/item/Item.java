@@ -6,12 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
 @Getter
 @EqualsAndHashCode
 @NoArgsConstructor
 @Entity
 public class Item {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "item_id")
     private Long id;
 
@@ -25,16 +27,21 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private Category category;
 
-    private String thumbnailUrl;
+    private String thumbnail;
 
     private int sales;
 
     @Builder
-    public Item(String name, int price, int stockQuantity, Category category, String thumbnailUrl) {
+    public Item(String name, int price, int stockQuantity, Category category, String thumbnailUrl, int sales) {
         this.name = name;
         this.price = price;
         this.stockQuantity = stockQuantity;
         this.category = category;
-        this.thumbnailUrl = thumbnailUrl;
+        this.thumbnail = thumbnailUrl;
+        this.sales = sales;
+    }
+
+    public void sell() {
+        this.stockQuantity--;
     }
 }

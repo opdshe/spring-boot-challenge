@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html lang="ko" dir="ltr">
-
-<head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
+{{>layout/header}}
 <h1>Challenge</h1>
 <nav id="nav_upper" align="right">
     <a href="index.mustache">home</a> |
     <a href="login.html">sign up</a> |
     <a href="login.html">sign in</a> |
-    <a href="bag.html">bag</a> |
+    <a href="bag.html">bag</a>
 </nav>
 <section>
     <nav id="nav_category">
@@ -30,9 +21,27 @@
         <li><a>Board</a></li>
     </nav>
     <article>
+        <div class="ga09list">
+            <ul class="grid4">
+                {{#items}}
+                    <li>
+                        <div class="prdpadding">
+                            <div class="prdline hoverimg"><a href="">
+                                <img src= {{thumbnail}} width="100%"></a></div>
 
+                            <p class="name">
+                                <a href="">
+                                    <span style="font-size:12px;color:#000000;">{{name}}</span>
+                                </a>
+                            </p>
+                            <p class="prices">
+                                <span style ="font-size:12px;color:#000000;">{{price}}원</span>
+                            </p>
+                        </div>
+                    </li>
+                {{/items}}
+            </ul>
+        </div>
     </article>
 </section>
-</body>
-
-</html>
+{{>layout/footer}}
