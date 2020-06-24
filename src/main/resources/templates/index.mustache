@@ -8,14 +8,14 @@
 </nav>
 <section>
     <nav id="nav_category">
-        <li><a class="active">All</a></li>
+        <li><a href="/" class="active">All</a></li>
         <li><a href="index.mustache">Best</a></li>
-        <li><a>Outer</a></li>
-        <li><a>Top</a></li>
-        <li><a>Bottom</a></li>
-        <li><a>Shoes</a></li>
-        <li><a>Acc</a></li>
-        <li><a>Women</a></li>
+        <li><a href="/items?category=OUTER&page=1">Outer</a></li>
+        <li><a href="/items?category=TOP&page=1">Top</a></li>
+        <li><a href="/?category=BOTTOM&page=1">Bottom</a></li>
+        <li><a href="/?category=SHOES&page=1">Shoes</a></li>
+        <li><a href="/?category=ACC&page=1">Acc</a></li>
+        <li><a href="/?category=WOMEN&page=1">Women</a></li>
         <br><br>
         <li><a>Notice</a></li>
         <li><a>Board</a></li>
@@ -35,7 +35,7 @@
                                 </a>
                             </p>
                             <p class="prices">
-                                <span style ="font-size:12px;color:#000000;">{{price}}원</span>
+                                <span style="font-size:12px;color:#000000;">{{price}}원</span>
                             </p>
                         </div>
                     </li>
@@ -44,4 +44,12 @@
         </div>
     </article>
 </section>
+<div class="page_wrap">
+    <div class="page_nation">
+        {{#pages}}
+            <a class="page_num">{{.}}</a>
+        {{/pages}}
+    </div>
+</div>
+<span style="float: right; font-size: 12px">해당 사이트의 상품들은 유토리의 상품들입니다. </span>
 {{>layout/footer}}
