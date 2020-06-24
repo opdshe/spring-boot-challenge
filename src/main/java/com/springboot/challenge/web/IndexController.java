@@ -20,29 +20,22 @@ import java.util.stream.IntStream;
 public class IndexController {
     private final ItemRepository itemRepository;
 
-    @GetMapping("/")
-    public String showAll(Model model) {
-        PageRequest pageRequest = PageRequest.of(0, 20, Sort.by(Sort.Direction.DESC, "sales"));
-        Page<Item> findPage = itemRepository.findAll(pageRequest);
-        model.addAttribute("items", findPage.getContent());
-        model.addAttribute("pages",IntStream.rangeClosed(1, findPage.getTotalPages())
-                .boxed()
-                .collect(Collectors.toList()));
-        System.out.println("called showAll method");
-        return "index";
-    }
-
     @GetMapping("/items")
-    public String filterByCategory(@RequestParam (value = "category",required = false) Category category,
-                                   @RequestParam (value="page", required = false) int page, Model model) {
+    public String items(@RequestParam (value = "category",required = false) Category category,
+                                   @RequestParam (value="page", required = false) Integer page, Model model) {
         PageRequest pageRequest = PageRequest.of(page-1, 20, Sort.by(Sort.Direction.DESC, "sales"));
-        Page<Item> findPage = itemRepository.findAllByCategory(category, pageRequest);
+        Page<Item> findPage = getPage(category, pageRequest);
         model.addAttribute("items", findPage.getContent());
         model.addAttribute("pages", IntStream.rangeClosed(1, findPage.getTotalPages())
                 .boxed()
                 .collect(Collectors.toList()));
-        System.out.println("called filterByCategory");
         return "index";
     }
 
+    private Page<Item> getPage(Category category, PageRequest pageRequest) {
+        if(category==null){
+            return itemRepository.findAll(pageRequest);
+        }
+        return itemRepository.findAllByCategory(category, pageRequest);
+    }
 }

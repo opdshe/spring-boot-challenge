@@ -8,6 +8,12 @@ function get_query(){
     return result;
 }
 let parameters = get_query();
+console.log(parameters['category']);
 $('.page_num').each(function (index, item) {
-    $(item).attr('href','?category='+parameters['category']+'&page='+(index+1));
+    if(parameters['category']==='undefined' || parameters['category']==null){
+        $(item).attr('href','?&page='+(index+1));
+    }
+    else {
+        $(item).attr('href','?category='+parameters['category']+'&page='+(index+1));
+    }
 })
