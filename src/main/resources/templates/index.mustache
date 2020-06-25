@@ -1,55 +1,6 @@
 {{>layout/header}}
-<h1>Challenge</h1>
-<nav id="nav_upper" align="right">
-    <a href="index.mustache">home</a> |
-    <a href="login.html">sign up</a> |
-    <a href="login.html">sign in</a> |
-    <a href="bag.html">bag</a>
-</nav>
-<section>
-    <nav id="nav_category">
-        <li><a href="/" class="active">All</a></li>
-        <li><a href="index.mustache">Best</a></li>
-        <li><a href="/items?category=OUTER&page=1">Outer</a></li>
-        <li><a href="/items?category=TOP&page=1">Top</a></li>
-        <li><a href="/items?category=BOTTOM&page=1">Bottom</a></li>
-        <li><a href="/items?category=SHOES&page=1">Shoes</a></li>
-        <li><a href="/items?category=ACC&page=1">Acc</a></li>
-        <li><a href="/items?category=WOMEN&page=1">Women</a></li>
-        <br><br>
-        <li><a>Notice</a></li>
-        <li><a>Board</a></li>
-    </nav>
-    <article>
-        <div class="ga09list">
-            <ul class="grid4">
-                {{#items}}
-                    <li>
-                        <div class="prdpadding">
-                            <div class="prdline hoverimg"><a href="">
-                                <img src= {{thumbnail}} width="100%"></a></div>
-
-                            <p class="name">
-                                <a href="">
-                                    <span style="font-size:12px;color:#000000;">{{name}}</span>
-                                </a>
-                            </p>
-                            <p class="prices">
-                                <span style="font-size:12px;color:#000000;">{{price}}원</span>
-                            </p>
-                        </div>
-                    </li>
-                {{/items}}
-            </ul>
-        </div>
-    </article>
+<section id="index-section">
+    <span id ="index-title">Challenge</span><br><br>
+    <span id="index-button"><a href="/items" style="color: black; text-decoration: none"> click >> </a></span>
 </section>
-<div class="page_wrap">
-    <div class="page_nation">
-        {{#pages}}
-            <a class="page_num">{{.}}</a>
-        {{/pages}}
-    </div>
-</div>
-<span style="float: right; font-size: 12px">해당 사이트의 상품들은 유토리의 상품들입니다. </span>
 {{>layout/footer}}

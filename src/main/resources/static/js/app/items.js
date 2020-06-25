@@ -16,4 +16,4 @@ $('.page_num').each(function (index, item) {
     else {
         $(item).attr('href','?category='+parameters['category']+'&page='+(index+1));
     }
-})
+});
