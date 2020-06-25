@@ -1,0 +1,55 @@
+{{>layout/header}}
+<div class="ec-base-table">
+    <table border="1" summary>
+        <caption>회원 기본정보</caption>
+        <colgroup>
+            <col style="width:150px">
+            <col style="width:auto;">
+        </colgroup>
+        <tbody>
+        <tr>
+            <th scope="row">아이디
+            </th>
+            <td>
+                <input id="member_id" name="member_id" class="inputTypeText" value="" type="text">
+                <span id="idMsg"></span> (영문소문자/숫자, 4~16자)
+            </td>
+            <br>
+        </tr>
+        <tr>
+            <th scope="row">비밀번호</th>
+            <td>
+                <input id="passwd" name="passwd" autocomplete="off" maxlength="16" 0="disabled" value=""
+                       type="password"> (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자)
+            </td>
+        </tr>
+        <br>
+        <tr>
+            <th scope="row" id="nameTitle">이름</th>
+            <td>
+                <span id="nameContents">
+                    <input type="text" name="name" id="name" maxlength="20">
+                </span>
+            </td>
+        </tr>
+        <br>
+        <tr class="">
+            <th scope="row">주소</th>
+            <td>
+                <input id="postcode" name="postcode" maxlength="50" value="" type="text">
+            </td>
+        </tr>
+        <br>
+        <tr class="">
+            <th scope="row">연락처</th>
+            <td>
+                <input id="phone" name="phone" maxlength="11" value="" type="text">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</section>
+<section>
+<div class ="btn-register"><input type="button" value="Register" style="float:right;"></div>
+{{>layout/footer}}

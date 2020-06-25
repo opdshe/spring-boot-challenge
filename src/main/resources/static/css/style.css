@@ -152,3 +152,65 @@ article {
     font-size: 20px;
     font-family: 'Montserrat', 'Nanum Gothic', sans-serif;
 }
+<!--회원가입 -->
+div {
+    display: block;
+    height: auto;
+}
+
+.ec-base-table table {
+    position: relative;
+    margin: 10px 0 0;
+    border: 1px solid #eaeaea;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    color: #fff;
+    line-height: 1.5;
+}
+
+table {
+    float: right;
+    width: 80%;
+    border: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+.ec-base-table tbody th {
+    padding: 14px 0 15px 18px;
+    border: 1px solid #eaeaea;
+    border-bottom-width: 0;
+    color: #353535;
+    text-align: left;
+    font-weight: normal;
+    background-color: #fff;
+}
+.ec-base-table td {
+    padding: 8px 10px 7px;
+}
+.ec-base-table{
+    width: 80%;
+    float: right;
+}
+.btn-register {
+    margin-left: 30px;
+    margin-top: 50px;
+    width: 81%;
+    height: 30px;
+}
+.btn-register input{
+    font-size: 20px;
+}
+
