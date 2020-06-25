@@ -9,7 +9,6 @@
 <section>
     <nav id="nav_category">
         <li><a href="/" class="active">All</a></li>
-        <li><a href="items.mustache">Best</a></li>
         <li><a href="/items?category=OUTER&page=1">Outer</a></li>
         <li><a href="/items?category=TOP&page=1">Top</a></li>
         <li><a href="/items?category=BOTTOM&page=1">Bottom</a></li>
@@ -47,7 +46,7 @@
 <div class="page_wrap">
     <div class="page_nation">
         {{#pages}}
-            <a class="page_num">{{.}}</a>
+            <a>{{.}}</a>
         {{/pages}}
     </div>
 </div>
