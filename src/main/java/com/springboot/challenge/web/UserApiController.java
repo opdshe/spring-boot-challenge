@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 public class UserApiController {
-    private UserService userService;
+    private final UserService userService;
 
     @PostMapping("/api/v1/user")
     public Long register (@RequestBody UserRegisterRequestDto userRegisterRequestDto) {

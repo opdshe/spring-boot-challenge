@@ -26,6 +26,9 @@ let page ={
     setActivePage: function() {
         let parameters = this.getParameters();
         let currentPage = parameters['page'];
+        if (currentPage == null){
+            currentPage=1;
+        }
         $('.page_nation').children('#page'+currentPage).attr('class','active');
     }
 }

@@ -1,9 +1,12 @@
 package com.springboot.challenge.web.dto;
 
 import com.springboot.challenge.domain.user.User;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-
+@NoArgsConstructor
+@Getter
 public class UserRegisterRequestDto {
     private String name;
 
@@ -20,5 +23,13 @@ public class UserRegisterRequestDto {
                 .email(email)
                 .phone(phone)
                 .build();
+    }
+
+    @Builder
+    public UserRegisterRequestDto(String name, String address, String email, String phone) {
+        this.name = name;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
     }
 }
