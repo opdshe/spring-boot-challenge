@@ -3,6 +3,8 @@ package com.springboot.challenge.web;
 import com.springboot.challenge.domain.item.Category;
 import com.springboot.challenge.domain.item.Item;
 import com.springboot.challenge.domain.item.ItemRepository;
+import com.springboot.challenge.service.ItemService;
+import com.springboot.challenge.web.dto.ItemResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,7 +21,7 @@ import java.util.stream.IntStream;
 @Controller
 public class ItemController {
     private static final Integer DEFAULT_PAGE = 1;
-    private final ItemRepository itemRepository;
+    private final ItemService itemService;
 
     @GetMapping("/items")
     public String items(@RequestParam(value = "category", required = false) Category category,
@@ -28,18 +30,11 @@ public class ItemController {
             page = DEFAULT_PAGE;
         }
         PageRequest pageRequest = PageRequest.of(page - 1, 20, Sort.by(Sort.Direction.DESC, "sales"));
-        Page<Item> findPage = getPage(category, pageRequest);
+        Page<ItemResponseDto> findPage = itemService.findAll(category, pageRequest);
         model.addAttribute("items", findPage.getContent());
         model.addAttribute("pages", IntStream.rangeClosed(1, findPage.getTotalPages())
                 .boxed()
                 .collect(Collectors.toList()));
         return "items";
-    }
-
-    private Page<Item> getPage(Category category, PageRequest pageRequest) {
-        if (category == null) {
-            return itemRepository.findAll(pageRequest);
-        }
-        return itemRepository.findAllByCategory(category, pageRequest);
     }
 }
