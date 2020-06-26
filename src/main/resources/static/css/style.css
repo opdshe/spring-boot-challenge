@@ -204,13 +204,13 @@ tr {
     width: 80%;
     float: right;
 }
-.btn-register {
+#div-register {
     margin-left: 30px;
-    margin-top: 50px;
+    margin-top: 30px;
     width: 81%;
     height: 30px;
 }
-.btn-register input{
+#div-register input{
     font-size: 20px;
 }
 

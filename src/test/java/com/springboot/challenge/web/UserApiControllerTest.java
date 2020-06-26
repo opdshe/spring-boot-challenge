@@ -3,7 +3,6 @@ package com.springboot.challenge.web;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springboot.challenge.domain.user.User;
 import com.springboot.challenge.domain.user.UserRepository;
-import com.springboot.challenge.service.UserService;
 import com.springboot.challenge.web.dto.UserRegisterRequestDto;
 import org.junit.Before;
 import org.junit.Test;
@@ -63,14 +62,13 @@ public class UserApiControllerTest {
         //when
         mvc.perform(post(url)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
-                .content(new ObjectMapper().writeValueAsString(requestDto)))
+                .content(new ObjectMapper().writeValueAsString(requestDto.toEntity())))
                 .andExpect(status().isOk());
 
         //then
         List<User> findUsers = repository.findAll();
         assertThat(findUsers.get(0).getName()).isEqualTo(name);
+        System.out.println(findUsers.get(0).getRole().toString());
 
     }
-
-
 }

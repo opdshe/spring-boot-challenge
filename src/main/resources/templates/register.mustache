@@ -11,16 +11,15 @@
             <th scope="row">아이디
             </th>
             <td>
-                <input id="member_id" name="member_id" class="inputTypeText" value="" type="text">
-                <span id="idMsg"></span> (영문소문자/숫자, 4~16자)
+                <input id="user_id" name="user_memId" class="inputTypeText" value="" type="text">
+                <span id="idMsg"></span>
             </td>
             <br>
         </tr>
         <tr>
             <th scope="row">비밀번호</th>
             <td>
-                <input id="passwd" name="passwd" autocomplete="off" maxlength="16" 0="disabled" value=""
-                       type="password"> (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자)
+                <input id="user_password" name="user_password" maxlength="16">
             </td>
         </tr>
         <br>
@@ -28,7 +27,7 @@
             <th scope="row" id="nameTitle">이름</th>
             <td>
                 <span id="nameContents">
-                    <input type="text" name="name" id="name" maxlength="20">
+                    <input type="text" name="user_name" id="user_name" maxlength="20">
                 </span>
             </td>
         </tr>
@@ -36,20 +35,20 @@
         <tr class="">
             <th scope="row">주소</th>
             <td>
-                <input id="postcode" name="postcode" maxlength="50" value="" type="text">
+                <input id="user_address" name="user_address" maxlength="50" value="" type="text">
             </td>
         </tr>
         <br>
         <tr class="">
             <th scope="row">연락처</th>
             <td>
-                <input id="phone" name="phone" maxlength="11" value="" type="text">
+                <input id="user_phone" name="user_phone" maxlength="11" value="" type="text">
             </td>
         </tr>
         <tr class="">
             <th scope="row">이메일</th>
             <td>
-                <input id="email" name="email" maxlength="20" value="" type="email">
+                <input id="user_email" name="user_email" maxlength="20" value="" type="email">
             </td>
         </tr>
         </tbody>
@@ -57,5 +56,5 @@
 </div>
 </section>
 <section>
-<div class ="btn-register"><input type="button" value="Register" style="float:right;"></div>
+    <div id ="div-register"><input id="btn-register" type="button" value="Register" style="float:right;"></div>
 {{>layout/footer}}
