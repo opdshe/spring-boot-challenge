@@ -1,0 +1,32 @@
+{{>layout/header}}
+<div class = "div-login">
+    <table border="1" summary class="table-login">
+        <caption>로그인</caption>
+        <colgroup>
+            <col style="width:150px">
+            <col style="width:auto;">
+        </colgroup>
+        <tbody class="tbody-login" >
+        <tr style="height: 40px">
+            <th scope="row">아이디
+            </th>
+            <td>
+                <input id="user_id" name="user_memId" class="inputTypeText" value="" type="text">
+                <span id="idMsg"></span>
+            </td>
+            <br>
+        </tr>
+        <tr style="height: 40px">
+            <th scope="row">비밀번호</th>
+            <td>
+                <input id="user_password" name="user_password" maxlength="16">
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+</section>
+<section>
+    <div id ="div-login"><input id="btn-login" type="button" value="Login" style="float:right;"></div>
+{{>layout/footer}}
