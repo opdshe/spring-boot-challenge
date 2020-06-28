@@ -244,3 +244,145 @@ tr {
 #div-login input{
     font-size: 20px;
 }
+<!---detail-->
+    .xans-product-detail {
+        font-family: 'Montserrat','Nanum Gothic',sans-serif;
+        position: relative;
+        margin: 0 auto;
+        font-weight: 400!important;
+        float: right;
+    }
+
+div {
+    display: block;
+}
+
+#prdDetail {
+    text-align: center;
+    line-height: 24px;
+}
+
+.xans-product-detail .imgArea {
+    padding-right: 465px;
+    padding-left: 15px;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+#prddetailimg img {
+    margin-top: 100px;
+    position: re;
+    float: center;
+    width: 50%;
+}
+
+#detail-right {
+    position: absolute;
+    left:50%;
+    top:50%;
+    width: 20%;
+}
+
+#detailinfo {
+    width: 400px;
+}
+
+.xans-product-detail .infoArea {
+    margin-top: -7px;
+}
+
+.xans-product-detail .infoArea table {
+    border: 0;
+    font-size: 12px;
+    line-height: 20px;
+    padding: 5px 0;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    height: 30px;
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.xans-product-detail .infoArea th {
+    font-weight: normal;
+    color: #353535;
+    width: 100px;
+    padding: 7px 0 8px 0;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.xans-product-detail .infoArea td {
+    padding-top: 4px;
+    vertical-align: middle;
+}
+
+.numcoutbx[_ngcontent-c65] button[_ngcontent-c65] {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #cdcdcd;
+    border-radius: 0;
+    background: #fff;
+    font-size: 15px;
+    color: #5d5d5d;
+    cursor: pointer;
+    text-decoration: none;
+    vertical-align: top;
+}
+
+.numcoutbx[_ngcontent-c65] input[_ngcontent-c65] {
+    width: 35px;
+    height: 32px;
+    padding-top: 2px;
+    border: 1px solid #cbcbcb;
+    border-width: 1px 0;
+    margin: 0;
+    font-size: 13px;
+    color: #666;
+    font-family: campton;
+    text-align: center;
+    box-sizing: border-box;
+    vertical-align: top;
+    -moz-appearance: textfield;
+}
+
+.numcoutbx[_ngcontent-c65] button[_ngcontent-c65] {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #cdcdcd;
+    border-radius: 0;
+    background: #fff;
+    font-size: 15px;
+    color: #5d5d5d;
+    cursor: pointer;
+    text-decoration: none;
+    vertical-align: top;
+}
+.option_bx {
+    position: absolute;
+    left:56%;
+    top: 70%;
+}
+
+#btn-bag {
+    width: 100px;
+    height: 28px;
+    position: absolute;
+    left:70%;
+    top: 70%;
+}
+
+

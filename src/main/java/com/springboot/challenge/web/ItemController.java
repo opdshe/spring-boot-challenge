@@ -37,4 +37,9 @@ public class ItemController {
                 .collect(Collectors.toList()));
         return "items";
     }
+
+    @GetMapping("/detail")
+    public String detail(){
+        return "detail";
+    }
 }
