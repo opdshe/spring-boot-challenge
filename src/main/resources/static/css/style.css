@@ -276,14 +276,14 @@ p {
 }
 #prddetailimg img {
     margin-top: 100px;
-    position: re;
+    position: relative;
     float: center;
-    width: 50%;
+    width: 60%;
 }
 
 #detail-right {
     position: absolute;
-    left:50%;
+    left:60%;
     top:50%;
     width: 20%;
 }
@@ -373,7 +373,7 @@ tr {
 }
 .option_bx {
     position: absolute;
-    left:56%;
+    left:66%;
     top: 70%;
 }
 
@@ -381,7 +381,7 @@ tr {
     width: 100px;
     height: 28px;
     position: absolute;
-    left:70%;
+    left:80%;
     top: 70%;
 }
 

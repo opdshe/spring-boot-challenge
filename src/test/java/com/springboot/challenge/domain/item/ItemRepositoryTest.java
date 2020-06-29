@@ -5,12 +5,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.function.Predicate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -75,5 +78,37 @@ public class ItemRepositoryTest {
 
         //then
         assertThat(target.getStockQuantity()).isEqualTo(4);
+    }
+
+    @Test
+    public void 필터링_동작_확왼() {
+        //given
+        Item shoes = Item.builder()
+                .name("오프화이트신발")
+                .price(1000000)
+                .category(Category.SHOES)
+                .stockQuantity(5)
+                .thumbnailUrl("helloWorld")
+                .build();
+
+        Item outer = Item.builder()
+                .name("코트")
+                .price(1000000)
+                .category(Category.OUTER)
+                .stockQuantity(5)
+                .thumbnailUrl("helloWorld")
+                .build();
+
+        //when
+        itemRepository.save(shoes);
+        itemRepository.save(outer);
+        PageRequest pageRequest = PageRequest.of(0, 20, Sort.by(Sort.Direction.DESC, "sales"));
+        List<Item> outers = itemRepository.findAllByCategory(Category.OUTER, pageRequest).getContent();
+        Boolean result =outers.stream()
+                .map(Item::getCategory)
+                .allMatch(Predicate.isEqual(Category.OUTER));
+
+        //then
+        assertThat(result).isTrue();
     }
 }

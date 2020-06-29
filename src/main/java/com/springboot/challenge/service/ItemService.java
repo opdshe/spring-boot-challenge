@@ -1,7 +1,6 @@
 package com.springboot.challenge.service;
 
 import com.springboot.challenge.domain.item.Category;
-import com.springboot.challenge.domain.item.Item;
 import com.springboot.challenge.domain.item.ItemRepository;
 import com.springboot.challenge.web.dto.ItemResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -19,11 +18,25 @@ public class ItemService {
     public Page<ItemResponseDto> findAll(Category category, PageRequest pageRequest) {
         if (category == null) {
             return itemRepository.findAll(pageRequest)
-                    .map(i -> new ItemResponseDto(i.getName(), i.getPrice(), i.getStockQuantity(),
-                            i.getCategory(), i.getThumbnail(), i.getSales()));
+                    .map(i -> ItemResponseDto.builder()
+                            .id(i.getId())
+                            .name(i.getName())
+                            .price(i.getPrice())
+                            .stockQuantity(i.getStockQuantity())
+                            .category(i.getCategory())
+                            .thumbnail(i.getThumbnail())
+                            .sales(i.getSales())
+                            .build());
         }
         return itemRepository.findAllByCategory(category, pageRequest)
-                .map(i -> new ItemResponseDto(i.getName(), i.getPrice(), i.getStockQuantity(),
-                        i.getCategory(), i.getThumbnail(), i.getSales()));
+                .map(i -> ItemResponseDto.builder()
+                        .id(i.getId())
+                        .name(i.getName())
+                        .price(i.getPrice())
+                        .stockQuantity(i.getStockQuantity())
+                        .category(i.getCategory())
+                        .thumbnail(i.getThumbnail())
+                        .sales(i.getSales())
+                        .build());
     }
 }

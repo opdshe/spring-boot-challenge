@@ -1,10 +1,11 @@
 package com.springboot.challenge.web.dto;
 
 import com.springboot.challenge.domain.item.Category;
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 
-@AllArgsConstructor
 public class ItemResponseDto {
+    private Long id;
+
     private String name;
 
     private int price;
@@ -16,4 +17,15 @@ public class ItemResponseDto {
     private String thumbnail;
 
     private int sales;
+
+    @Builder
+    public ItemResponseDto(Long id, String name, int price, int stockQuantity, Category category, String thumbnail, int sales) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+        this.category = category;
+        this.thumbnail = thumbnail;
+        this.sales = sales;
+    }
 }
