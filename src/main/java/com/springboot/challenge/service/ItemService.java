@@ -1,6 +1,7 @@
 package com.springboot.challenge.service;
 
 import com.springboot.challenge.domain.item.Category;
+import com.springboot.challenge.domain.item.Item;
 import com.springboot.challenge.domain.item.ItemRepository;
 import com.springboot.challenge.web.dto.ItemResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -18,25 +19,16 @@ public class ItemService {
     public Page<ItemResponseDto> findAll(Category category, PageRequest pageRequest) {
         if (category == null) {
             return itemRepository.findAll(pageRequest)
-                    .map(i -> ItemResponseDto.builder()
-                            .id(i.getId())
-                            .name(i.getName())
-                            .price(i.getPrice())
-                            .stockQuantity(i.getStockQuantity())
-                            .category(i.getCategory())
-                            .thumbnail(i.getThumbnail())
-                            .sales(i.getSales())
-                            .build());
+                    .map(ItemResponseDto::new);
         }
         return itemRepository.findAllByCategory(category, pageRequest)
-                .map(i -> ItemResponseDto.builder()
-                        .id(i.getId())
-                        .name(i.getName())
-                        .price(i.getPrice())
-                        .stockQuantity(i.getStockQuantity())
-                        .category(i.getCategory())
-                        .thumbnail(i.getThumbnail())
-                        .sales(i.getSales())
-                        .build());
+                .map(ItemResponseDto::new);
+    }
+
+    @Transactional
+    public ItemResponseDto findById(Long id) {
+        Item item = itemRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 존재하지 않습니다. id=" + id));
+        return new ItemResponseDto(item);
     }
 }

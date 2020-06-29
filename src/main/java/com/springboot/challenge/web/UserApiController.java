@@ -1,6 +1,5 @@
 package com.springboot.challenge.web;
 
-import com.springboot.challenge.domain.user.UserRepository;
 import com.springboot.challenge.service.UserService;
 import com.springboot.challenge.web.dto.UserRegisterRequestDto;
 import lombok.RequiredArgsConstructor;

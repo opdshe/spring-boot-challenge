@@ -1,7 +1,7 @@
 package com.springboot.challenge.web.dto;
 
 import com.springboot.challenge.domain.item.Category;
-import lombok.Builder;
+import com.springboot.challenge.domain.item.Item;
 
 public class ItemResponseDto {
     private Long id;
@@ -18,14 +18,13 @@ public class ItemResponseDto {
 
     private int sales;
 
-    @Builder
-    public ItemResponseDto(Long id, String name, int price, int stockQuantity, Category category, String thumbnail, int sales) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.stockQuantity = stockQuantity;
-        this.category = category;
-        this.thumbnail = thumbnail;
-        this.sales = sales;
+    public ItemResponseDto(Item entity) {
+        this.id = entity.getId();
+        this.name = entity.getName();
+        this.price = entity.getPrice();
+        this.stockQuantity = entity.getStockQuantity();
+        this.category = entity.getCategory();
+        this.thumbnail = entity.getThumbnail();
+        this.sales = entity.getSales();
     }
 }

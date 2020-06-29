@@ -6,7 +6,7 @@
                 <div id="prddetailimg">
                     <p style="text-align: center;">
                         <img alt="" style="font-size: 9pt;"
-                             src="https://youthtory.kr/web/upload/NNEditor/20200602/IMG_9270_shop1_161233.jpg">
+                             src="{{item.thumbnail}}">
                     </p>
                 </div>
             </div>
@@ -17,10 +17,7 @@
 <div id="detail-right" style="bottom: inherit; top=0px;">
     <div id="detailinfo">
         <div class="infoArea">
-            <div style="padding-bottom:15px" class="xans-element- xans-product xans-product-detaildesign"><!--
-                    출력 갯수 지정 변수, 없으면 설정된 전체가 나옵니다.
-                    count = 10
-                -->
+            <div style="padding-bottom:15px" class="xans-element- xans-product xans-product-detaildesign">
                 <table border="1" summary="">
                     <tbody>
                     <tr class=" xans-record-">
@@ -28,7 +25,7 @@
                             <span style="font-size:12px;color:#000000;">상품명</span>
                         </th>
                         <td style="padding-bottom:8px; text-align: center">
-                            <span style="font-size:12px;color:#000000;">Natural Linen Jacket</span>
+                            <span style="font-size:12px;color:#000000;">{{item.name}}</span>
                         </td>
                     </tr>
                     <tr class=" xans-record-">
@@ -37,7 +34,7 @@
                         </th>
                         <td scope="row" style="text-align: center">
                             <span style="font-size:15px;color:#000000;font-weight:bold; text-align: center">
-	                            <strong id="span_product_price_text" style="text-align: center">66,000원</strong>
+	                            <strong id="span_product_price_text" style="text-align: center">{{item.price}}</strong>
 	                            <input id="product_price" name="product_price" value="" type="hidden">
                             </span>
                         </td>
