@@ -22,12 +22,6 @@ public class UserService {
     public UserResponseDto findByMemId(String memId){
         User user = userRepository.findByMemId(memId)
                 .orElseThrow(()->new IllegalArgumentException("해당 아이디가 존재하지 않습니다."+memId));
-        return UserResponseDto.builder()
-                .name(user.getName())
-                .address(user.getAddress())
-                .email(user.getEmail())
-                .phone(user.getPhone())
-                .role(user.getRole())
-                .build();
+        return new UserResponseDto(user);
     }
 }

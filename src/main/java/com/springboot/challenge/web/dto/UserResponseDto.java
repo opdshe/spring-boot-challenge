@@ -1,13 +1,15 @@
 package com.springboot.challenge.web.dto;
 
 import com.springboot.challenge.domain.user.Role;
-import lombok.Builder;
+import com.springboot.challenge.domain.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
 public class UserResponseDto {
+    private Long id;
+
     private String memId;
 
     private String password;
@@ -22,21 +24,14 @@ public class UserResponseDto {
 
     private Role role;
 
-    @Builder
-    public UserResponseDto(String memId, String password, String name, String address, String email, String phone, Role role) {
-        this.memId = memId;
-        this.password = password;
-        this.name = name;
-        this.address = address;
-        this.email = email;
-        this.phone = phone;
-        this.role = role;
-    }
-
-    public Boolean isAdmin(){
-        if (role.equals(Role.ADMIN)){
-            return true;
-        }
-        return false;
+    public UserResponseDto(User entity) {
+        this.id = entity.getId();
+        this.memId = entity.getMemId();
+        this.password = entity.getPassword();
+        this.name = entity.getName();
+        this.address = entity.getAddress();
+        this.email = entity.getEmail();
+        this.phone = entity.getPhone();
+        this.role = entity.getRole();
     }
 }

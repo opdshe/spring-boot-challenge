@@ -1,4 +1,4 @@
-let user = {
+let register = {
     init : function() {
         let _this =this;
         $('#btn-register').on('click', function() {
@@ -29,4 +29,4 @@ let user = {
         });
     }
 }
-user.init();
+register.init();
