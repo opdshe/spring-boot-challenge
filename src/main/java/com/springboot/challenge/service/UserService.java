@@ -5,6 +5,7 @@ import com.springboot.challenge.domain.user.MemberRepository;
 import com.springboot.challenge.web.dto.UserRegisterRequestDto;
 import com.springboot.challenge.web.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,9 +20,9 @@ public class UserService {
     }
 
     @Transactional
-    public UserResponseDto findByMemId(String memId){
-        Member member = memberRepository.findByMemId(memId)
-                .orElseThrow(()->new IllegalArgumentException("해당 아이디가 존재하지 않습니다."+memId));
+    public UserResponseDto findByMemId(String userId){
+        Member member = memberRepository.findByUserId(userId)
+                .orElseThrow(()->new IllegalArgumentException("해당 아이디가 존재하지 않습니다."+userId));
         return new UserResponseDto(member);
     }
 }

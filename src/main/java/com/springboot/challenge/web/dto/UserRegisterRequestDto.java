@@ -1,15 +1,17 @@
 package com.springboot.challenge.web.dto;
 
 import com.springboot.challenge.domain.user.Member;
-import com.springboot.challenge.domain.user.Role;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @NoArgsConstructor
 @Getter
 public class UserRegisterRequestDto {
-    private String memId;
+    private static final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+    private String userId;
 
     private String password;
 
@@ -21,13 +23,11 @@ public class UserRegisterRequestDto {
 
     private String phone;
 
-    private Role userRole;
-
     public Member toEntity() {
         return Member.builder()
-                .memId(memId)
+                .userId(userId)
                 .name(name)
-                .password(password)
+                .password(passwordEncoder.encode(password))
                 .address(address)
                 .email(email)
                 .phone(phone)
@@ -35,8 +35,8 @@ public class UserRegisterRequestDto {
     }
 
     @Builder
-    public UserRegisterRequestDto(String memId, String password, String name, String address, String email, String phone) {
-        this.memId = memId;
+    public UserRegisterRequestDto(String userId, String password, String name, String address, String email, String phone) {
+        this.userId = userId;
         this.password = password;
         this.name = name;
         this.address = address;

@@ -21,6 +21,8 @@ public class MemberRepositoryTest extends TestCase {
         //given
         Member member = Member.builder()
                 .name("heon")
+                .userId("test")
+                .password("testPassword")
                 .email("opdshe@naver.com")
                 .address("경기도 수원시 우만동")
                 .phone("01033333333")

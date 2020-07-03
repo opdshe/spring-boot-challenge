@@ -19,13 +19,13 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    @Column(name = "member_user_id")
-    private String memId;
+    @Column(name = "member_user_id", nullable = false)
+    private String userId;
 
-    @Column(name = "member_password")
+    @Column(name = "member_password", nullable = false)
     private String password;
 
-    @Column(name = "member_name")
+    @Column(name = "member_name", nullable = false)
     private String name;
 
     @Column(name = "member_address")
@@ -36,15 +36,15 @@ public class Member {
     private String phone;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "member_role", nullable = true, columnDefinition = "varchar(255) default 'CUSTOMER'")
+    @Column(name = "member_role", nullable = false, columnDefinition = "varchar(255) default 'CUSTOMER'")
     private Role role;
 
     @OneToMany(mappedBy = "member")
     private List<Orders> ordersList = new ArrayList<>();
 
     @Builder
-    public Member(String memId, String password, String name, String address, String email, String phone) {
-        this.memId = memId;
+    public Member(String userId, String password, String name, String address, String email, String phone) {
+        this.userId = userId;
         this.password = password;
         this.name = name;
         this.address = address;

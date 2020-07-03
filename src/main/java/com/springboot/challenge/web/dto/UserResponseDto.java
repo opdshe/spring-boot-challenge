@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class UserResponseDto {
     private Long id;
 
-    private String memId;
+    private String userId;
 
     private String password;
 
@@ -26,7 +26,7 @@ public class UserResponseDto {
 
     public UserResponseDto(Member entity) {
         this.id = entity.getId();
-        this.memId = entity.getMemId();
+        this.userId = entity.getUserId();
         this.password = entity.getPassword();
         this.name = entity.getName();
         this.address = entity.getAddress();

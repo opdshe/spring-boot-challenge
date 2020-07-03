@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.MediaType;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -48,10 +49,15 @@ public class MemberApiControllerTest {
     public void 회원가입_동작_확인() throws Exception {
         //given
         String name = "heon";
+        String userId = "test";
+        String password ="testPassword";
         String address = "수원";
         String email = "abc@naver.com";
         String phone = "01012345678";
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         UserRegisterRequestDto requestDto = UserRegisterRequestDto.builder()
+                .userId(userId)
+                .password(passwordEncoder.encode(password))
                 .name(name)
                 .address(address)
                 .email(email)
@@ -69,6 +75,5 @@ public class MemberApiControllerTest {
         List<Member> findMembers = repository.findAll();
         assertThat(findMembers.get(0).getName()).isEqualTo(name);
         System.out.println(findMembers.get(0).getRole().toString());
-
     }
 }
