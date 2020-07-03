@@ -1,8 +1,8 @@
 package com.springboot.challenge.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.springboot.challenge.domain.user.User;
-import com.springboot.challenge.domain.user.UserRepository;
+import com.springboot.challenge.domain.user.Member;
+import com.springboot.challenge.domain.user.MemberRepository;
 import com.springboot.challenge.web.dto.UserRegisterRequestDto;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class UserApiControllerTest {
+public class MemberApiControllerTest {
 
     @Autowired
     private WebApplicationContext context;
@@ -32,7 +32,7 @@ public class UserApiControllerTest {
     private MockMvc mvc;
 
     @Autowired
-    private UserRepository repository;
+    private MemberRepository repository;
 
     @LocalServerPort
     private int port;
@@ -66,9 +66,9 @@ public class UserApiControllerTest {
                 .andExpect(status().isOk());
 
         //then
-        List<User> findUsers = repository.findAll();
-        assertThat(findUsers.get(0).getName()).isEqualTo(name);
-        System.out.println(findUsers.get(0).getRole().toString());
+        List<Member> findMembers = repository.findAll();
+        assertThat(findMembers.get(0).getName()).isEqualTo(name);
+        System.out.println(findMembers.get(0).getRole().toString());
 
     }
 }

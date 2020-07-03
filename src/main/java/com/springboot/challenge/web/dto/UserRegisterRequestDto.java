@@ -1,7 +1,7 @@
 package com.springboot.challenge.web.dto;
 
+import com.springboot.challenge.domain.user.Member;
 import com.springboot.challenge.domain.user.Role;
-import com.springboot.challenge.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,8 +23,8 @@ public class UserRegisterRequestDto {
 
     private Role userRole;
 
-    public User toEntity() {
-        return User.builder()
+    public Member toEntity() {
+        return Member.builder()
                 .memId(memId)
                 .name(name)
                 .password(password)

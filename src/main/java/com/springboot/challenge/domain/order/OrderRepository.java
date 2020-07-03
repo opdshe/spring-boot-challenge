@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface OrderRepository extends JpaRepository<Orders, Long> {
 
-    @EntityGraph(attributePaths={"user"})
+    @EntityGraph(attributePaths={"member"})
     List<Orders> findAll();
 }

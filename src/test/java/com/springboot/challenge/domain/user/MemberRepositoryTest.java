@@ -12,27 +12,27 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserRepositoryTest extends TestCase {
+public class MemberRepositoryTest extends TestCase {
     @Autowired
-    private UserRepository userRepository;
+    private MemberRepository memberRepository;
 
     @Test
     public void User_등록_확인() {
         //given
-        User user = User.builder()
+        Member member = Member.builder()
                 .name("heon")
                 .email("opdshe@naver.com")
                 .address("경기도 수원시 우만동")
                 .phone("01033333333")
                 .build();
-        userRepository.save(user);
+        memberRepository.save(member);
 
         //when
-        List<User> users = userRepository.findAll();
-        User findUser = users.get(0);
+        List<Member> members = memberRepository.findAll();
+        Member findMember = members.get(0);
 
         //then
-        assertThat(user.getName()).isEqualTo(findUser.getName());
-        assertThat(user.getAddress()).isEqualTo(findUser.getAddress());
+        assertThat(member.getName()).isEqualTo(findMember.getName());
+        assertThat(member.getAddress()).isEqualTo(findMember.getAddress());
     }
 }

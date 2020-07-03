@@ -1,7 +1,7 @@
 package com.springboot.challenge.domain.order;
 
 import com.springboot.challenge.domain.orderitem.OrderItem;
-import com.springboot.challenge.domain.user.User;
+import com.springboot.challenge.domain.user.Member;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,8 +20,8 @@ public class Orders {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
@@ -30,8 +30,8 @@ public class Orders {
     private LocalDate orderDate;
 
     @Builder
-    public Orders(User user) {
-        this.user = user;
+    public Orders(Member member) {
+        this.member = member;
         this.orderDate = LocalDate.now();
     }
 }

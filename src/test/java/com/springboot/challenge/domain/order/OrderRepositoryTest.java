@@ -1,7 +1,7 @@
 package com.springboot.challenge.domain.order;
 
-import com.springboot.challenge.domain.user.User;
-import com.springboot.challenge.domain.user.UserRepository;
+import com.springboot.challenge.domain.user.Member;
+import com.springboot.challenge.domain.user.MemberRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,21 +19,21 @@ public class OrderRepositoryTest {
     private OrderRepository orderRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private MemberRepository memberRepository;
 
     @Test
     public void Order_등록_확인() {
         //given
-        User user = User.builder()
+        Member member = Member.builder()
                 .name("heon")
                 .email("opdshe@naver.com")
                 .address("경기도 수원시 우만동")
                 .phone("01033333333")
                 .build();
-        userRepository.save(user);
+        memberRepository.save(member);
 
         Orders order = Orders.builder()
-                .user(user)
+                .member(member)
                 .build();
         orderRepository.save(order);
 
@@ -43,6 +43,6 @@ public class OrderRepositoryTest {
         System.out.println(findOrder.getOrderDate());
 
         //then
-        assertThat(order.getUser().getName()).isEqualTo(findOrder.getUser().getName());
+        assertThat(order.getMember().getName()).isEqualTo(findOrder.getMember().getName());
     }
 }

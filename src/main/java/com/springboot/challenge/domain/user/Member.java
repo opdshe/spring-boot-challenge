@@ -14,21 +14,21 @@ import static com.springboot.challenge.domain.user.Role.CUSTOMER;
 @Getter
 @NoArgsConstructor
 @Entity
-public class User {
+public class Member {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "member_id")
     private Long id;
 
-    @Column(name = "user_mem_id")
+    @Column(name = "member_user_id")
     private String memId;
 
-    @Column(name = "user_password")
+    @Column(name = "member_password")
     private String password;
 
-    @Column(name = "user_name")
+    @Column(name = "member_name")
     private String name;
 
-    @Column(name = "user_address")
+    @Column(name = "member_address")
     private String address;
 
     private String email;
@@ -36,14 +36,14 @@ public class User {
     private String phone;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "user_role", nullable = true, columnDefinition = "varchar(255) default 'CUSTOMER'")
+    @Column(name = "member_role", nullable = true, columnDefinition = "varchar(255) default 'CUSTOMER'")
     private Role role;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "member")
     private List<Orders> ordersList = new ArrayList<>();
 
     @Builder
-    public User(String memId, String password, String name, String address, String email, String phone) {
+    public Member(String memId, String password, String name, String address, String email, String phone) {
         this.memId = memId;
         this.password = password;
         this.name = name;
