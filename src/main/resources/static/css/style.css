@@ -225,6 +225,7 @@ tr {
     transform: translate(-50%, 80%);
     float: left;
     width: 20%;
+    height: auto;
     left: 50%;
     top: 50%;
     border: 0;
@@ -234,19 +235,19 @@ tr {
 .table-login tr {
     margin: 20px;
 }
-#div-login {
-    position: relative;
-    margin-left: 30px;
-    margin-top: 30px;
-    transform: translate(-80%, 200%);
+#div-login-btn{
+    transform: translate(-50%, 200%);
     float: left;
-    width: 40%;
-    left: 50%;
-    height: 30px;
+    width: 10%;
+    position: relative;
+    top: -0%;
+    left: 41.5%;
+    height: 100px;
 }
 #div-login input{
     font-size: 20px;
 }
+
 <!---detail-->
     .xans-product-detail {
         font-family: 'Montserrat','Nanum Gothic',sans-serif;

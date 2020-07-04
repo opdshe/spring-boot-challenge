@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
     @Override
@@ -16,9 +18,11 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
         HttpSession httpSession = request.getSession();
         if (httpSession != null) {
             String redirectUrl = (String) httpSession.getAttribute("prevPage");
-            Object principal = authentication.getPrincipal();
-            UserDetails userDetails = (UserDetails) principal;
-            httpSession.setAttribute("user", userDetails);
+            Map<Long, Integer> bag = new HashMap<>();
+            bag.put(1L, 3);
+            httpSession.setAttribute("user", authentication.getPrincipal());
+            httpSession.setAttribute("bag", bag);
+
             if (redirectUrl != null) {
                 httpSession.removeAttribute("prevPage");
                 getRedirectStrategy().sendRedirect(request, response, redirectUrl);

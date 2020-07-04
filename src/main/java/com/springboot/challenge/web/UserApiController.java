@@ -3,9 +3,10 @@ package com.springboot.challenge.web;
 import com.springboot.challenge.service.UserService;
 import com.springboot.challenge.web.dto.UserRegisterRequestDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
