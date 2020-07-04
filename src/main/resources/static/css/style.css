@@ -282,6 +282,7 @@ p {
     position: relative;
     float: center;
     width: 60%;
+    height: 60%;
 }
 
 #detail-right {
@@ -376,7 +377,7 @@ tr {
 }
 .option_bx {
     position: absolute;
-    left:66%;
+    left:65.5%;
     top: 70%;
 }
 
