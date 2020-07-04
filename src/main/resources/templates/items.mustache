@@ -5,16 +5,20 @@
                 {{#items}}
                     <li>
                         <div class="prdpadding">
-                            <div class="prdline hoverimg"><a href="detail?item-num={{id}}">
+                            <a href="detail?item-num={{id}}">
+                            <div class="prdline hoverimg">
                                 <img src= {{thumbnail}} width="100%"></div>
+                            </a>
 
                             <p class="name">
-                                <a href="">
+                                <a href="detail?item-num={{id}}">
                                     <span style="font-size:12px;color:#000000;">{{name}}</span>
                                 </a>
                             </p>
                             <p class="prices">
+                                <a href="detail?item-num={{id}}">
                                 <span style="font-size:12px;color:#000000;">{{price}}원</span>
+                                </a>
                             </p>
                         </div>
                     </li>

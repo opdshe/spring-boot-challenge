@@ -7,7 +7,7 @@ let register = {
     },
     register: function (){
         let data = {
-            memId: $('#user_id').val(),
+            userId: $('#user_id').val(),
             password: $('#user_password').val(),
             name: $('#user_name').val(),
             address: $('#user_address').val(),

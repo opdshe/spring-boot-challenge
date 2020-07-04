@@ -8,15 +8,15 @@
 <body>
 <h1>Challenge</h1>
 <nav id="nav_upper" align="right">
-    <a href="/items">home</a> |
-    {{#member}}
+    <a href="/items">home</a>
+    {{#user}}
         <a href="/items">logout</a>
-    {{/member}}
-    {{^member}}
-        <a href="/login">login</a> |
-        <a href="/register">register</a> |
-    {{/member}}
-    <a href="bag.html">bag</a>
+    {{/user}}
+    {{^user}}
+        <a href="/login">login</a>
+        <a href="/register">register</a>
+    {{/user}}
+    <a href="/bag">bag</a>
 </nav>
 <section>
     <nav id="nav_category">

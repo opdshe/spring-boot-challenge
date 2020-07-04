@@ -36,7 +36,7 @@ public class Member {
     private String phone;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "member_role", nullable = false, columnDefinition = "varchar(255) default 'CUSTOMER'")
+    @Column(name = "member_role", nullable = false, columnDefinition = "varchar(255) default 'ROLE_CUSTOMER'")
     private Role role;
 
     @OneToMany(mappedBy = "member")

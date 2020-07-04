@@ -30,13 +30,26 @@
                     </tr>
                     <tr class=" xans-record-">
                         <th scope="row">
-                            <span style="font-size:15px;color:#000000;font-weight:bold;">판매가</span>
+                            <span style="font-size:15px;color:#000000;">판매가</span>
                         </th>
                         <td scope="row" style="text-align: center">
-                            <span style="font-size:15px;color:#000000;font-weight:bold; text-align: center">
-	                            <strong id="span_product_price_text" style="text-align: center">{{item.price}}</strong>
-	                            <input id="product_price" name="product_price" value="" type="hidden">
-                            </span>
+                            <span style="font-size:15px;color:#000000;">{{item.price}}원</span>
+                        </td>
+                    </tr>
+                    <tr class=" xans-record-">
+                        <th scope="row">
+                            <span style="font-size:12px;color:#000000;">누적 판매량</span>
+                        </th>
+                        <td style="padding-bottom:8px; text-align: center">
+                            <span style="font-size:12px;color:#000000;">{{item.sales}} 개</span>
+                        </td>
+                    </tr>
+                    <tr class=" xans-record-">
+                        <th scope="row">
+                            <span style="font-size:12px;color:#000000;">재고</span>
+                        </th>
+                        <td style="padding-bottom:8px; text-align: center">
+                            <span style="font-size:12px;color:#000000;">{{item.stockQuantity}} 개</span>
                         </td>
                     </tr>
                     </tbody>

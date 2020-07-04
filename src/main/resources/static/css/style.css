@@ -6,10 +6,12 @@ h1 {
 
 #nav_upper {
     float: right;
-    padding-right: 50px;
+    margin-right: 2%;
 }
 
 #nav_upper a {
+    margin-left: 10px;
+    text-decoration: none;
     color: black;
 }
 
@@ -26,6 +28,7 @@ h1 {
     float: left;
     background-color: #ffffff;
 }
+
 
 li a {
     margin-left: 10px;
