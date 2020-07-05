@@ -32,7 +32,7 @@ let detail = {
         }).done(function () {
             alert('해당 상품이 장바구니에 등록 되었습니다. ');
         }).fail(function (error) {
-            alert(JSON.stringify(error));
+            alert(JSON.stringify('로그인 후 이용해 주세요'));
         });
     }
 }

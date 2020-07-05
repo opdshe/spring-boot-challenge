@@ -57,7 +57,7 @@ article {
 }
 
 @media (max-width: 600px) {
-    #nav_category, article {
+    #nav_category, section {
         width: 100%;
         height: auto;
     }
@@ -422,12 +422,30 @@ tr {
 #thumb-img {
     max-width: 80px;
 }
-#table-bag{
-    margin-top: 100px;
+#div-bag{
     float: right;
+    position: static;
     width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+#table-bag{
+    float: right;
+    position: relative;
+    margin-top: 100px;
+    top:0;
+    width: 100%;
     border: 0;
     border-spacing: 0;
     border-collapse: collapse;
     text-align: center;
+}
+
+#btn-buy {
+    position: relative;
+    float: inherit;
+    height: 30px;
+    width: 10%;
+    left: 89%;
+    top: 20px;
 }

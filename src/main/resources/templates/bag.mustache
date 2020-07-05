@@ -1,42 +1,47 @@
 {{>layout/header}}
-<table border="1" id="table-bag">
-    <thead>
-    <tr>
-        <th scope="col"><input type="checkbox"
-                               onclick="Basket.setCheckBasketList('basket_product_normal_type_normal', this);"></th>
-        <th scope="col">이미지</th>
-        <th scope="col">상품정보</th>
-        <th scope="col">판매가</th>
-        <th scope="col">수량</th>
-    </tr>
-    </thead>
+<div id="div-bag">
+    <table border="1" id="table-bag">
+        <thead>
+        <tr>
+            <th scope="col"><input type="checkbox"
+                                   onclick="Basket.setCheckBasketList('basket_product_normal_type_normal', this);"></th>
+            <th scope="col">이미지</th>
+            <th scope="col">상품정보</th>
+            <th scope="col">판매가</th>
+            <th scope="col">수량</th>
+            <th scope="col">총 금</th>
+        </tr>
+        </thead>
 
-    <tbody class="xans-element- xans-order xans-order-list center">
-    {{#items}}
-    <tr class="xans-record-">
-        <td>
-            <input type="checkbox" id="basket_chk_id_0" name="basket_product_normal_type_normal">
-        </td>
-        <td class="thumb gClearLine">
-                <img src={{thumbnail}}
-                id="thumb-img">
-            </a>
-        </td>
-        <td class="left gClearLine">
-            <strong class="name">{{name}}</strong>
-        </td>
-        <td>
-            <div class="">
-                <strong>{{price}}</strong>
-            </div>
-        </td>
-        <td>
-            <div class="">
-                <strong>3 개</strong>
-            </div>
-        </td>
-    </tr>
-    {{/items}}
-    </tbody>
-</table>
+        <tbody class="xans-element- xans-order xans-order-list center">
+        {{#items}}
+            <tr class="xans-record-">
+                <td>
+                    <input type="checkbox" id="basket_chk_id_0" name="basket_product_normal_type_normal">
+                </td>
+                <td class="thumb gClearLine">
+                    <img src={{thumbnail}}
+                         id="thumb-img">
+                    </a>
+                </td>
+                <td class="left gClearLine">
+                    <strong class="name">{{name}}</strong>
+                </td>
+                <td>
+                    <div class="">
+                        <strong>{{price}}</strong>
+                    </div>
+                </td>
+                <td>
+                    <strong>{{count}}</strong>
+                </td>
+                <td>
+                    <strong>{{totalPrice}}</strong>
+                </td>
+            </tr>
+        {{/items}}
+        </tbody>
+    </table>
+    <input id="btn-buy" type="button" value="BUY">
+</div>
 {{>layout/footer}}

@@ -2,7 +2,11 @@ package com.springboot.challenge.web.dto;
 
 import com.springboot.challenge.domain.item.Category;
 import com.springboot.challenge.domain.item.Item;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class ItemResponseDto {
     private Long id;
 
@@ -17,6 +21,10 @@ public class ItemResponseDto {
     private String thumbnail;
 
     private int sales;
+
+    private int count;
+
+    private int totalPrice;
 
     public ItemResponseDto(Item entity) {
         this.id = entity.getId();

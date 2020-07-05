@@ -1,7 +1,6 @@
 package com.springboot.challenge.config;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
 import javax.servlet.ServletException;
@@ -19,7 +18,6 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
         if (httpSession != null) {
             String redirectUrl = (String) httpSession.getAttribute("prevPage");
             Map<Long, Integer> bag = new HashMap<>();
-            bag.put(1L, 3);
             httpSession.setAttribute("user", authentication.getPrincipal());
             httpSession.setAttribute("bag", bag);
 
