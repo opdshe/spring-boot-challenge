@@ -17,7 +17,7 @@ let register = {
 
         $.ajax({
             type: 'POST',
-            url: '/api/v1/user',
+            url: '/api/v1/register',
             dataType: 'json',
             contentType: 'application/json; charset = utf-8',
             data: JSON.stringify(data)

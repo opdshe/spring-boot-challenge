@@ -17,7 +17,7 @@
 <div id="detail-right" style="bottom: inherit; top=0px;">
     <div id="detailinfo">
         <div class="infoArea">
-            <span id="span-item-num" style="display: none">{{item.id}}</span>
+            <input id="span-item-num" style="display:none;" value="{{item.id}}">
             <div style="padding-bottom:15px" class="xans-element- xans-product xans-product-detaildesign">
                 <table border="1" summary="">
                     <tbody>
@@ -50,7 +50,7 @@
                             <span style="font-size:12px;color:#000000;">재고</span>
                         </th>
                         <td style="padding-bottom:8px; text-align: center">
-                            <span style="font-size:12px;color:#000000;">{{item.stockQuantity}} 개</span>
+                                <span style="font-size:12px;color:#000000;">{{item.stockQuantity}} 개</span>
                         </td>
                     </tr>
                     </tbody>
@@ -59,6 +59,7 @@
         </div>
     </div>
 </div>
+
 <div class="option_bx">
     <ruler-numcoutbx _ngcontent-c35="" _nghost-c65="" class="ng-untouched ng-valid ng-dirty">
 		<span _ngcontent-c65="" class="numcoutbx">

@@ -1,10 +1,9 @@
 package com.springboot.challenge.web;
 
 import com.springboot.challenge.service.ItemService;
+import com.springboot.challenge.web.dto.DetailResponseDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.Map;
@@ -12,16 +11,17 @@ import java.util.Map;
 @RequiredArgsConstructor
 @RestController
 public class ItemApiController {
+    private static final int DEFAULT_COUNT = 0;
+
     private final ItemService itemService;
 
-    @GetMapping("/api/v1/insert")
-    public String insert (@RequestParam(value = "item-num") Long id,
-                          @RequestParam(value = "count") Integer count,
-                          HttpSession httpSession){
+    @PostMapping("/api/v1/auth/insert")
+    public String insert(@RequestBody DetailResponseDto responseDto,
+                         HttpSession httpSession) {
         Object bagAttribute = httpSession.getAttribute("bag");
         Map<Long, Integer> bag = (Map<Long, Integer>) bagAttribute;
-        bag.put(id, bag.getOrDefault(id, 0)+count);
+        bag.put(responseDto.getId(), bag.getOrDefault(responseDto.getId(), DEFAULT_COUNT) + responseDto.getCount());
         httpSession.setAttribute("bag", bag);
-        return bag.get(id).toString();
+        return bag.get(responseDto.getId()).toString();
     }
 }

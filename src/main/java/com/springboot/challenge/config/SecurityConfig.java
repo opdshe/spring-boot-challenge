@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final CustomUserDetailsService customUserDetailsService;
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
+    public void configure(WebSecurity web) {
         web.ignoring()
                 .antMatchers("/static/**", "/templates/**");
     }
@@ -30,20 +30,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/bag").authenticated()
+                .antMatchers("/bag", "/api/v1/auth/**").authenticated()
                 .antMatchers("/**").permitAll()
                 .and()
                 .formLogin()
-                    .loginPage("/login")
-                    .loginProcessingUrl("/admin/login")
-                    .usernameParameter("username")
-                    .passwordParameter("password")
-                    .successHandler(successHandler())
+                .loginPage("/login")
+                .loginProcessingUrl("/admin/login")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .successHandler(successHandler())
                 .failureUrl("/")
                 .and()
                 .logout();
-
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public AuthenticationSuccessHandler successHandler(){
+    public AuthenticationSuccessHandler successHandler() {
         return new CustomLoginSuccessHandler();
     }
 

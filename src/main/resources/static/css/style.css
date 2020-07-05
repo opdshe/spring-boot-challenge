@@ -390,4 +390,44 @@ tr {
     top: 70%;
 }
 
+<!--bag -->
 
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.xans-element- xans-order xans-order-list tr{
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;}
+
+.ec-base-table.typeList.gBorder tbody td {
+    border-color: #eee;
+}
+
+.ec-base-table.typeList .center td.left {
+    padding-left: 10px;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+.xans-order-basketpackage .ec-base-table td.thumb img {
+    max-width: 80px;
+}
+#thumb-img {
+    max-width: 80px;
+}
+#table-bag{
+    margin-top: 100px;
+    float: right;
+    width: 70%;
+    border: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+    text-align: center;
+}
