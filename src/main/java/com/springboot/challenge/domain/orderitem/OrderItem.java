@@ -3,11 +3,11 @@ package com.springboot.challenge.domain.orderitem;
 import com.springboot.challenge.domain.item.Item;
 import com.springboot.challenge.domain.order.Orders;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
 @Getter
 @NoArgsConstructor
 @Entity

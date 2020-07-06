@@ -10,7 +10,6 @@ import com.springboot.challenge.domain.orderitem.OrderItem;
 import com.springboot.challenge.domain.orderitem.OrderItemRepository;
 import com.springboot.challenge.exceptions.MemberMismatchException;
 import com.springboot.challenge.web.dto.DetailResponseDto;
-import com.springboot.challenge.web.util.SessionManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

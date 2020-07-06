@@ -42,7 +42,7 @@ public class OrderRepositoryTest {
         //when
         List<Orders> orders = orderRepository.findAll();
         Orders findOrder = orders.get(0);
-        System.out.println(findOrder.getOrderDate());
+        System.out.println(findOrder.getOrderDatetime());
 
         //then
         assertThat(order.getMember().getName()).isEqualTo(findOrder.getMember().getName());

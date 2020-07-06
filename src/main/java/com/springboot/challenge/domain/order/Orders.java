@@ -3,14 +3,15 @@ package com.springboot.challenge.domain.order;
 import com.springboot.challenge.domain.orderitem.OrderItem;
 import com.springboot.challenge.domain.member.Member;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @NoArgsConstructor
