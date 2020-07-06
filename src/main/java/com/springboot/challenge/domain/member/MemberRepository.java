@@ -1,4 +1,4 @@
-package com.springboot.challenge.domain.user;
+package com.springboot.challenge.domain.member;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,6 +1,6 @@
 package com.springboot.challenge.web;
 
-import com.springboot.challenge.service.UserService;
+import com.springboot.challenge.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 @Controller
 public class UserController {
-    private final UserService userService;
+    private final MemberService memberService;
 
     @GetMapping("/register")
     public String register() {

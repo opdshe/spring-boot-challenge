@@ -1,12 +1,11 @@
 package com.springboot.challenge.domain.order;
 
-import com.springboot.challenge.domain.user.Member;
-import com.springboot.challenge.domain.user.MemberRepository;
+import com.springboot.challenge.domain.member.Member;
+import com.springboot.challenge.domain.member.MemberRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;

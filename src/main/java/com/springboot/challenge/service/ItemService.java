@@ -36,10 +36,11 @@ public class ItemService {
     }
 
     @Transactional
-    public List<ItemResponseDto> findByIdIn(List<Long> ids) {
+    public List<ItemResponseDto> itemResponseDtosFindByIdIn(List<Long> ids) {
         List<ItemResponseDto> items = itemRepository.findByIdIn(ids).stream()
                 .map(ItemResponseDto::new)
                 .collect(Collectors.toList());
         return items;
     }
+
 }

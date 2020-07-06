@@ -27,4 +27,8 @@ public class OrderItem {
     private int orderPrice;
 
     private int count;
+
+    public void setOrderItemInfo(Orders orders, Item item) {
+
+    }
 }

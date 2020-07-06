@@ -1,4 +1,4 @@
-package com.springboot.challenge.domain.user;
+package com.springboot.challenge.domain.member;
 
 import com.springboot.challenge.domain.order.Orders;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.springboot.challenge.domain.user.Role.CUSTOMER;
+import static com.springboot.challenge.domain.member.Role.CUSTOMER;
 
 @Getter
 @NoArgsConstructor

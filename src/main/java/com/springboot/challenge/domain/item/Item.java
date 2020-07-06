@@ -43,5 +43,6 @@ public class Item {
 
     public void sell() {
         this.stockQuantity--;
+        this.sales++;
     }
 }

@@ -1,6 +1,6 @@
 package com.springboot.challenge.web.dto;
 
-import com.springboot.challenge.domain.user.Member;
+import com.springboot.challenge.domain.member.Member;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

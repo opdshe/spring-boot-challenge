@@ -1,7 +1,7 @@
 package com.springboot.challenge.domain.order;
 
 import com.springboot.challenge.domain.orderitem.OrderItem;
-import com.springboot.challenge.domain.user.Member;
+import com.springboot.challenge.domain.member.Member;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,8 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 public class Orders {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "order_id")
     private Long id;
 
@@ -33,5 +34,9 @@ public class Orders {
     public Orders(Member member) {
         this.member = member;
         this.orderDate = LocalDate.now();
+    }
+
+    public void order(Member member, List<OrderItem> orderItems) {
+
     }
 }

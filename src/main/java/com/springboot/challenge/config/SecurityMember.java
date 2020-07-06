@@ -1,7 +1,7 @@
 package com.springboot.challenge.config;
 
-import com.springboot.challenge.domain.user.Member;
-import com.springboot.challenge.domain.user.Role;
+import com.springboot.challenge.domain.member.Member;
+import com.springboot.challenge.domain.member.Role;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,9 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Getter
 @Setter

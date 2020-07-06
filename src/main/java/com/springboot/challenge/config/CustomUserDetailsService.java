@@ -1,7 +1,7 @@
 package com.springboot.challenge.config;
 
-import com.springboot.challenge.domain.user.Member;
-import com.springboot.challenge.domain.user.MemberRepository;
+import com.springboot.challenge.domain.member.Member;
+import com.springboot.challenge.domain.member.MemberRepository;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

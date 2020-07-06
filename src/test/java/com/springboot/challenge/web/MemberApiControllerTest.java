@@ -1,8 +1,8 @@
 package com.springboot.challenge.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.springboot.challenge.domain.user.Member;
-import com.springboot.challenge.domain.user.MemberRepository;
+import com.springboot.challenge.domain.member.Member;
+import com.springboot.challenge.domain.member.MemberRepository;
 import com.springboot.challenge.web.dto.UserRegisterRequestDto;
 import org.junit.Before;
 import org.junit.Test;
@@ -63,7 +63,7 @@ public class MemberApiControllerTest {
                 .email(email)
                 .phone(phone)
                 .build();
-        String url = "http://localhost:" + port + "/api/v1/user";
+        String url = "http://localhost:" + port + "/api/v1/register";
 
         //when
         mvc.perform(post(url)
