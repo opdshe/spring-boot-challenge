@@ -2,6 +2,7 @@ package com.springboot.challenge.config;
 
 import com.springboot.challenge.domain.member.Member;
 import com.springboot.challenge.domain.member.MemberRepository;
+import com.springboot.challenge.exceptions.MemberMismatchException;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +19,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
         Member member = memberRepository.findByUserId(userId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 아이디가 존재하지 않습니다." + userId));
+                .orElseThrow(()->new MemberMismatchException(userId));
         return new SecurityMember(member);
     }
 }

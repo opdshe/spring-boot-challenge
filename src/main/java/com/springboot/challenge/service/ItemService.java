@@ -3,6 +3,7 @@ package com.springboot.challenge.service;
 import com.springboot.challenge.domain.item.Category;
 import com.springboot.challenge.domain.item.Item;
 import com.springboot.challenge.domain.item.ItemRepository;
+import com.springboot.challenge.exceptions.MemberMismatchException;
 import com.springboot.challenge.web.dto.ItemResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -31,7 +32,7 @@ public class ItemService {
     @Transactional
     public ItemResponseDto findById(Long id) {
         Item item = itemRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 존재하지 않습니다. id=" + id));
+                .orElseThrow(() -> new MemberMismatchException(id.toString()));
         return new ItemResponseDto(item);
     }
 

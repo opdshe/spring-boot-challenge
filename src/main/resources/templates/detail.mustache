@@ -6,7 +6,7 @@
                 <div id="prddetailimg">
                     <p style="text-align: center;">
                         <img alt="" style="font-size: 9pt;"
-                             src="{{item.thumbnail}}">
+                             src="{{detailItem.thumbnail}}">
                     </p>
                 </div>
             </div>
@@ -17,7 +17,7 @@
 <div id="detail-right" style="bottom: inherit; top=0px;">
     <div id="detailinfo">
         <div class="infoArea">
-            <input id="span-item-num" style="display:none;" value="{{item.id}}">
+            <input id="span-item-num" style="display:none;" value="{{detailItem.id}}">
             <div style="padding-bottom:15px" class="xans-element- xans-product xans-product-detaildesign">
                 <table border="1" summary="">
                     <tbody>
@@ -26,7 +26,7 @@
                             <span style="font-size:12px;color:#000000;">상품명</span>
                         </th>
                         <td style="padding-bottom:8px; text-align: center">
-                            <span style="font-size:12px;color:#000000;">{{item.name}}</span>
+                            <span style="font-size:12px;color:#000000;">{{detailItem.name}}</span>
                         </td>
                     </tr>
                     <tr class=" xans-record-">
@@ -34,7 +34,7 @@
                             <span style="font-size:15px;color:#000000;">판매가</span>
                         </th>
                         <td scope="row" style="text-align: center">
-                            <span style="font-size:15px;color:#000000;">{{item.price}}원</span>
+                            <span style="font-size:15px;color:#000000;">{{detailItem.price}}원</span>
                         </td>
                     </tr>
                     <tr class=" xans-record-">
@@ -42,7 +42,7 @@
                             <span style="font-size:12px;color:#000000;">누적 판매량</span>
                         </th>
                         <td style="padding-bottom:8px; text-align: center">
-                            <span style="font-size:12px;color:#000000;">{{item.sales}} 개</span>
+                            <span style="font-size:12px;color:#000000;">{{detailItem.sales}} 개</span>
                         </td>
                     </tr>
                     <tr class=" xans-record-">
@@ -50,7 +50,7 @@
                             <span style="font-size:12px;color:#000000;">재고</span>
                         </th>
                         <td style="padding-bottom:8px; text-align: center">
-                                <span style="font-size:12px;color:#000000;">{{item.stockQuantity}} 개</span>
+                                <span style="font-size:12px;color:#000000;">{{detailItem.stockQuantity}} 개</span>
                         </td>
                     </tr>
                     </tbody>

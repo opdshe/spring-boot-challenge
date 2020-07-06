@@ -2,6 +2,7 @@ package com.springboot.challenge.domain.orderitem;
 
 import com.springboot.challenge.domain.item.Item;
 import com.springboot.challenge.domain.order.Orders;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +12,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 public class OrderItem {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_item_id")
     private Long id;
 
@@ -28,7 +30,11 @@ public class OrderItem {
 
     private int count;
 
-    public void setOrderItemInfo(Orders orders, Item item) {
-
+    @Builder
+    public OrderItem(Orders order, Item item, int count) {
+        this.item = item;
+        this.order = order;
+        this.orderPrice = item.getPrice()*count;
+        this.count = count;
     }
 }

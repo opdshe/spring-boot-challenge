@@ -27,6 +27,8 @@ public class ProductController {
     private static final String REQUEST_PARAMETER_PAGE = "page";
     private static final String REQUEST_PARAMETER_ITEM_NUM = "item-num";
     private static final String MODEL_ATTRIBUTE_ITEMS = "items";
+    private static final String MODEL_ATTRIBUTE_DETAIL_ITEM = "detailItem";
+
     private static final String MODEL_ATTRIBUTE_PAGES = "pages";
     private static final Integer DEFAULT_PAGE = 1;
     private static final int NUMBER_OF_ITEMS_ON_ONE_PAGE = 20;
@@ -53,7 +55,7 @@ public class ProductController {
     @GetMapping("/detail")
     public String detail(@RequestParam(value = REQUEST_PARAMETER_ITEM_NUM) Long id, Model model) {
         ItemResponseDto responseDto = itemService.findById(id);
-        model.addAttribute(MODEL_ATTRIBUTE_ITEMS, responseDto);
+        model.addAttribute(MODEL_ATTRIBUTE_DETAIL_ITEM, responseDto);
         return "detail";
     }
 

@@ -1,10 +1,14 @@
 package com.springboot.challenge.service;
 
+import com.springboot.challenge.domain.item.Item;
 import com.springboot.challenge.domain.item.ItemRepository;
 import com.springboot.challenge.domain.member.Member;
 import com.springboot.challenge.domain.member.MemberRepository;
 import com.springboot.challenge.domain.order.OrderRepository;
+import com.springboot.challenge.domain.order.Orders;
+import com.springboot.challenge.domain.orderitem.OrderItem;
 import com.springboot.challenge.domain.orderitem.OrderItemRepository;
+import com.springboot.challenge.exceptions.MemberMismatchException;
 import com.springboot.challenge.web.dto.DetailResponseDto;
 import com.springboot.challenge.web.util.SessionManager;
 import lombok.RequiredArgsConstructor;
@@ -15,9 +19,9 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-import static com.springboot.challenge.web.util.SessionManager.BAG_ATTRIBUTE_NAME;
-import static com.springboot.challenge.web.util.SessionManager.getBagSessionAttribute;
+import static com.springboot.challenge.web.util.SessionManager.*;
 
 @RequiredArgsConstructor
 @Service
@@ -38,12 +42,22 @@ public class TransactionService {
     }
 
     @Transactional
-    public String buy(HttpSession httpSession) {
-        String username = SessionManager.getUserSessionAttribute(httpSession).getUsername();
-        Member member = memberRepository.findByUserId(username)
-                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 존재하지 않습니다. "));
+    public Long buy(HttpSession httpSession) {
+        String username = getUserSessionAttribute(httpSession).getUsername();
         Map<Long, Integer> bag = getBagSessionAttribute(httpSession);
-        List<Long> itemIds = new ArrayList<>(bag.keySet());
-        return null;
+        Member member = memberRepository.findByUserId(username)
+                .orElseThrow(() -> new MemberMismatchException(username));
+        List<Item> items = itemRepository.findByIdIn(new ArrayList<>(bag.keySet()));
+
+        Orders order = new Orders(member);
+        List<OrderItem> orderItems = items.stream()
+                .map(item-> new OrderItem(order, item, bag.get(item.getId())))
+                .collect(Collectors.toList());
+        order.setOrderInfo(orderItems);
+
+        orderItemRepository.saveAll(orderItems);
+        orderRepository.save(order);
+        setBagAttributeName(httpSession);
+        return order.getId();
     }
 }

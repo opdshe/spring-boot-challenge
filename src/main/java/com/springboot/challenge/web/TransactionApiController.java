@@ -20,7 +20,7 @@ public class TransactionApiController {
     }
 
     @PostMapping("/api/v1/auth/buy")
-    public String buy(HttpSession httpSession) {
+    public Long buy(HttpSession httpSession) {
         return transactionService.buy(httpSession);
     }
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
 @Entity
 public class Orders {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
     private Long id;
 
@@ -27,16 +28,17 @@ public class Orders {
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    @Column(name = "order_date")
-    private LocalDate orderDate;
+    @Column(name = "order_datetime")
+    private LocalDateTime orderDatetime;
 
     @Builder
     public Orders(Member member) {
         this.member = member;
-        this.orderDate = LocalDate.now();
+        this.orderDatetime = LocalDateTime.now();
     }
 
-    public void order(Member member, List<OrderItem> orderItems) {
-
+    public void setOrderInfo(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
+        this.member.getOrdersList().add(this);
     }
 }
