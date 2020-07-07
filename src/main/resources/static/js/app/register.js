@@ -1,8 +1,10 @@
 let register = {
     init : function() {
         let _this =this;
-        $('#btn-register').on('click', function() {
-            _this.register();
+        $('#btn-register').each(function(item) {
+            $(item).on('click', function(){
+                this.attr('class', 'active');
+            })
         })
     },
     register: function (){

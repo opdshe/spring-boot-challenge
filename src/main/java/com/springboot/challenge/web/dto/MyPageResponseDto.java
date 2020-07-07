@@ -7,11 +7,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class MyPageResponseDto {
-    private String orderName;
+    private final String orderName;
 
-    private int totalPrice;
+    private final int totalPrice;
 
-    private LocalDateTime orderDateTime;
+    private final LocalDateTime orderDateTime;
 
     public MyPageResponseDto(Orders orders) {
         this.orderName = setOrderName(orders.getOrderItems());
