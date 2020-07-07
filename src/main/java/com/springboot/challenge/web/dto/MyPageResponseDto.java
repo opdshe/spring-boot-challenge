@@ -7,6 +7,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class MyPageResponseDto {
+    private static final int DEFAULT_OFFSET = 1;
+    private static final String AND = "외";
+    private static final String COUNT_UNIT = "개";
+
     private final String orderName;
 
     private final int totalPrice;
@@ -26,6 +30,6 @@ public class MyPageResponseDto {
         if (orderItems.size() == 1) {
             return orderItems.get(0).getItem().getName();
         }
-        return orderItems.get(0).getItem().getName() + "외" + (orderItems.size() - 1) + "개";
+        return orderItems.get(0).getItem().getName() + AND + (orderItems.size() - DEFAULT_OFFSET) + COUNT_UNIT;
     }
 }
