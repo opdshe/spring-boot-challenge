@@ -3,7 +3,6 @@ package com.springboot.challenge.domain.orderitem;
 import com.springboot.challenge.domain.item.Item;
 import com.springboot.challenge.domain.order.Orders;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -21,7 +20,7 @@ public class OrderItem {
     @JoinColumn(name = "item_id")
     private Item item;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Orders order;
 

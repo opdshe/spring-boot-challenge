@@ -2,12 +2,15 @@ package com.springboot.challenge.web.dto;
 
 import com.springboot.challenge.domain.member.Role;
 import com.springboot.challenge.domain.member.Member;
+import com.springboot.challenge.domain.order.Orders;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Getter
 @NoArgsConstructor
-public class UserResponseDto {
+public class MemberResponseDto {
     private Long id;
 
     private String userId;
@@ -24,7 +27,9 @@ public class UserResponseDto {
 
     private Role role;
 
-    public UserResponseDto(Member entity) {
+    private List<Orders> ordersList;
+
+    public MemberResponseDto(Member entity) {
         this.id = entity.getId();
         this.userId = entity.getUserId();
         this.password = entity.getPassword();
@@ -33,5 +38,6 @@ public class UserResponseDto {
         this.email = entity.getEmail();
         this.phone = entity.getPhone();
         this.role = entity.getRole();
+        this.ordersList = entity.getOrdersList();
     }
 }

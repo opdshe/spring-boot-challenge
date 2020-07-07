@@ -8,7 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @NoArgsConstructor
 @Getter
-public class UserRegisterRequestDto {
+public class MemberRegisterRequestDto {
     private static final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     private String userId;
@@ -35,7 +35,7 @@ public class UserRegisterRequestDto {
     }
 
     @Builder
-    public UserRegisterRequestDto(String userId, String password, String name, String address, String email, String phone) {
+    public MemberRegisterRequestDto(String userId, String password, String name, String address, String email, String phone) {
         this.userId = userId;
         this.password = password;
         this.name = name;

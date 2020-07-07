@@ -1,6 +1,7 @@
 package com.springboot.challenge.domain.member;
 
 import junit.framework.TestCase;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class MemberRepositoryTest extends TestCase {
     @Autowired
     private MemberRepository memberRepository;
+
+    @After
+    public void cleanUp(){
+        memberRepository.deleteAll();
+    }
 
     @Test
     public void User_등록_확인() {

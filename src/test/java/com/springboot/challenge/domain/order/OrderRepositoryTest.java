@@ -2,6 +2,7 @@ package com.springboot.challenge.domain.order;
 
 import com.springboot.challenge.domain.member.Member;
 import com.springboot.challenge.domain.member.MemberRepository;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,12 @@ public class OrderRepositoryTest {
 
     @Autowired
     private MemberRepository memberRepository;
+
+    @After
+    public void cleanUp(){
+        orderRepository.deleteAll();
+        memberRepository.deleteAll();
+    }
 
     @Test
     public void Order_등록_확인() {

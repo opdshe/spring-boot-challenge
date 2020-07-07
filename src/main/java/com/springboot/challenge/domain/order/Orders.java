@@ -11,7 +11,15 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
+@NamedEntityGraph(name = "Order.withAll", attributeNodes = {
+        @NamedAttributeNode(value = "orderItems", subgraph = "orderItems")
+        },
+        subgraphs = @NamedSubgraph(name = "orderItems", attributeNodes = {
+                @NamedAttributeNode("item")
+        })
+)
+
 
 @Getter
 @NoArgsConstructor

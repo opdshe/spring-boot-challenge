@@ -3,7 +3,8 @@ package com.springboot.challenge.web;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springboot.challenge.domain.member.Member;
 import com.springboot.challenge.domain.member.MemberRepository;
-import com.springboot.challenge.web.dto.UserRegisterRequestDto;
+import com.springboot.challenge.web.dto.MemberRegisterRequestDto;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,6 +45,10 @@ public class MemberApiControllerTest {
                 .webAppContextSetup(context)
                 .build();
     }
+    @After
+    public void cleanUp(){
+        repository.deleteAll();
+    }
 
     @Test
     public void 회원가입_동작_확인() throws Exception {
@@ -55,7 +60,7 @@ public class MemberApiControllerTest {
         String email = "abc@naver.com";
         String phone = "01012345678";
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        UserRegisterRequestDto requestDto = UserRegisterRequestDto.builder()
+        MemberRegisterRequestDto requestDto = MemberRegisterRequestDto.builder()
                 .userId(userId)
                 .password(passwordEncoder.encode(password))
                 .name(name)
