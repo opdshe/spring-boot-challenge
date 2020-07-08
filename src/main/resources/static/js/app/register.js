@@ -1,10 +1,8 @@
 let register = {
     init : function() {
         let _this =this;
-        $('#btn-register').each(function(item) {
-            $(item).on('click', function(){
-                this.attr('class', 'active');
-            })
+        $('#btn-register').on('click', function(){
+            _this.register();
         })
     },
     register: function (){
@@ -25,7 +23,7 @@ let register = {
             data: JSON.stringify(data)
         }).done(function () {
             alert('회원 가입이 완료되었습니다. ');
-            window.location.href = '/items';
+            window.location.href = '/products';
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });

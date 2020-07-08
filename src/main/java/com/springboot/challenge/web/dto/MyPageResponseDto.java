@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MyPageResponseDto {
     private static final int DEFAULT_OFFSET = 1;
-    private static final String AND = "외";
+    private static final String AND = " 외 ";
     private static final String COUNT_UNIT = "개";
 
     private final String orderName;
