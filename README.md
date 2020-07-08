@@ -35,8 +35,6 @@ spring-boot 와 spring-data-jpa를 이용한 쇼핑몰 구현하기
   + 구매 기능 구현 V
     + 구매 버튼 클릭 시 디비에 저장 V
     + 구매 버튼 클릭 시 장바구니 삭제
-  + 게시판 글 조회 기능
-  + 공지 사항 글 조회 기능
   + 필요한 모든 로직에 대한 단위 테스트 작성
   
 Screenshots
@@ -51,8 +49,8 @@ Screenshots
 + 개발 환경
   + 개발 언어 : Java
   + 프레임워크 : Spring-boot, Spring-data-JPA
-  + 서버 : google cloud platform
-  + 데이터베이스 : gcp sql (MySQL)
+  + 서버 : AWS
+  + 데이터베이스 : AWS RDS (MariaDB)
   + 개발 일시 : 2020/06/21 ~
   
   
