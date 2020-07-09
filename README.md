@@ -1,4 +1,4 @@
-# spring-boot-challenge
+# spring-boot-challenge [![Build Status](https://travis-ci.com/opdshe/spring-boot-challenge.svg?branch=master)](https://travis-ci.com/opdshe/spring-boot-challenge)
 spring-boot 와 spring-data-jpa를 이용한 쇼핑몰 구현하기
 
 + 프로그램 기능 목록
@@ -36,6 +36,7 @@ spring-boot 와 spring-data-jpa를 이용한 쇼핑몰 구현하기
     + 구매 버튼 클릭 시 디비에 저장 V
     + 구매 버튼 클릭 시 장바구니 삭제
   + 필요한 모든 로직에 대한 단위 테스트 작성
+  + 배포
   
 Screenshots
 ------
