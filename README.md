@@ -37,6 +37,9 @@ spring-boot 와 spring-data-jpa를 이용한 쇼핑몰 구현하기
     + 구매 버튼 클릭 시 장바구니 삭제
   + 필요한 모든 로직에 대한 단위 테스트 작성
   + 배포
+    + EC2에 프로젝트 설치
+    + Travis 연결
+    + Travis - AWS S3 연결
   
 Screenshots
 ------
