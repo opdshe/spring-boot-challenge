@@ -20,15 +20,8 @@ public class MemberService {
     }
 
     @Transactional
-    public MemberResponseDto findMemberResponseDtoByUserId(String userId){
-        Member member = memberRepository.findByUserId(userId)
-                .orElseThrow(()->new MemberMismatchException(userId));
-        return new MemberResponseDto(member);
-    }
-
-    @Transactional
-    public Member findByUserId(String userId){
+    public Member findByUserId(String userId) {
         return memberRepository.findByUserId(userId)
-                .orElseThrow(()->new MemberMismatchException(userId));
+                .orElseThrow(() -> new MemberMismatchException(userId));
     }
 }
