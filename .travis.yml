@@ -19,6 +19,11 @@ notifications:
   email:
     recipients:
       - rlfjrlck@ajou.ac.kr
+
+before_deploy:
+  - zip -r challenge *
+  - mkdir -p deploy
+  - mv challenge.zip deploy/challenge.zip
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
@@ -27,6 +32,7 @@ deploy:
     region: ap-northeast-2
     skip_cleanup: true
     acl: public_read
+    local_dir: deploy
     wait-until-deployed: true
     on:
       repo: opdshe/spring-boot-challenge #Github 주소
