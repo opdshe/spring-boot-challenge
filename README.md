@@ -55,13 +55,18 @@ Screenshots
 
 ![bag](image/bag.png)
   
+Database 설계
+-------
 ![database](image/database.png)  
+
+
 
 
 + 개발 환경
   + 개발 언어 : Java
   + 프레임워크 : Spring-boot, Spring-data-JPA
   + 서버 : AWS
+  + 배포 자동화 : Travis CI , AWS CodeDeploy
   + 데이터베이스 : AWS RDS (MariaDB)
   + 개발 일시 : 2020/06/21 ~ 2020/07/09
   
