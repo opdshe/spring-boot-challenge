@@ -25,7 +25,7 @@ import static com.springboot.challenge.web.util.SessionManager.*;
 @RequiredArgsConstructor
 @Service
 public class TransactionService {
-    private static final int DEFAULT_ITEM_COUNT = 0;
+    private static final int COUNT_OF_ITEMS_IN_EMPTY_BAG = 0;
 
     private final MemberRepository memberRepository;
     private final ItemRepository itemRepository;
@@ -35,7 +35,7 @@ public class TransactionService {
     @Transactional
     public Long insert(DetailResponseDto responseDto, HttpSession httpSession) {
         Map<Long, Integer> bag = getBagSessionAttribute(httpSession);
-        bag.put(responseDto.getId(), bag.getOrDefault(responseDto.getId(), DEFAULT_ITEM_COUNT) + responseDto.getCount());
+        bag.put(responseDto.getId(), bag.getOrDefault(responseDto.getId(), COUNT_OF_ITEMS_IN_EMPTY_BAG) + responseDto.getCount());
         httpSession.setAttribute(BAG_ATTRIBUTE_NAME, bag);
         return responseDto.getId();
     }
@@ -46,7 +46,7 @@ public class TransactionService {
         Map<Long, Integer> bag = getBagSessionAttribute(httpSession);
         Member member = memberRepository.findByUserId(username)
                 .orElseThrow(() -> new MemberMismatchException(username));
-        List<Item> items = itemRepository.findByIdIn(new ArrayList<>(bag.keySet()));
+        List<Item> items = itemRepository.findItemListByIdIn(new ArrayList<>(bag.keySet()));
 
         Orders order = new Orders(member);
         List<OrderItem> orderItems = items.stream()

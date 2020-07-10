@@ -12,5 +12,5 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
     Page<Item> findAllByCategory(Category category, Pageable pageable);
 
-    List<Item> findByIdIn(List<Long> ids);
+    List<Item> findItemListByIdIn(List<Long> ids);
 }

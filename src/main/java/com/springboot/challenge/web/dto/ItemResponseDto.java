@@ -35,4 +35,9 @@ public class ItemResponseDto {
         this.thumbnail = entity.getThumbnail();
         this.sales = entity.getSales();
     }
+
+    public void setExtraInfo(int count) {
+        this.count = count;
+        this.totalPrice = count * price;
+    }
 }
