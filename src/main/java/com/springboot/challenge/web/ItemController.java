@@ -22,7 +22,7 @@ import java.util.stream.IntStream;
 
 @RequiredArgsConstructor
 @Controller
-public class ProductController {
+public class ItemController {
     private static final String REQUEST_PARAMETER_CATEGORY = "category";
     private static final String REQUEST_PARAMETER_PAGE = "page";
     private static final String REQUEST_PARAMETER_ITEM_NUM = "item-num";

@@ -2,9 +2,8 @@ package com.springboot.challenge.web;
 
 import com.springboot.challenge.domain.member.Member;
 import com.springboot.challenge.domain.order.Orders;
-import com.springboot.challenge.service.MemberService;
-import com.springboot.challenge.service.OrderService;
-import com.springboot.challenge.web.dto.MyPageResponseDto;
+import com.springboot.challenge.service.UserService;
+import com.springboot.challenge.web.dto.OrderDtoForMyPage;
 import com.springboot.challenge.web.util.SessionManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,8 +18,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Controller
 public class UserController {
-    private final MemberService memberService;
-    private final OrderService orderService;
+    private final UserService userService;
 
     @GetMapping("/register")
     public String register() {
@@ -33,14 +31,14 @@ public class UserController {
         request.getSession().setAttribute("prevPage", referer);
         return "login";
     }
+
     @GetMapping("/mypage")
     public String mypage(HttpSession httpSession, Model model) {
-        System.out.println("=============================mypage==============================");
         String userId = SessionManager.getUserSessionAttribute(httpSession).getUsername();
-        Member member = memberService.findByUserId(userId);
-        List<Orders> allByMember = orderService.findAllByMember(member);
-        List<MyPageResponseDto> orderList = allByMember.stream()
-                .map(MyPageResponseDto::new)
+        Member member = userService.findByUserId(userId);
+        List<Orders> allOrdersFindByMember = userService.findAllByMember(member);
+        List<OrderDtoForMyPage> orderList = allOrdersFindByMember.stream()
+                .map(OrderDtoForMyPage::new)
                 .collect(Collectors.toList());
         model.addAttribute("orderList", orderList);
         return "mypage";

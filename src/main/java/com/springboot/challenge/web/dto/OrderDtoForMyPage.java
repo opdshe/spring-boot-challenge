@@ -6,8 +6,8 @@ import com.springboot.challenge.domain.orderitem.OrderItem;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class MyPageResponseDto {
-    private static final int DEFAULT_OFFSET = 1;
+public class OrderDtoForMyPage {
+    private static final int DEFAULT_COUNT = 1;
     private static final String AND = " 외 ";
     private static final String COUNT_UNIT = "개";
 
@@ -17,19 +17,24 @@ public class MyPageResponseDto {
 
     private final LocalDateTime orderDateTime;
 
-    public MyPageResponseDto(Orders orders) {
+    public OrderDtoForMyPage(Orders orders) {
         this.orderName = setOrderName(orders.getOrderItems());
         this.totalPrice = orders.getOrderItems().stream()
                 .map(OrderItem::getOrderPrice)
                 .reduce(Integer::sum)
-                .get();
+                .orElseThrow(()->new IllegalArgumentException("해당 주문의 금액이 존재하지 않습니다. "));
         this.orderDateTime = orders.getOrderDatetime();
     }
 
     private String setOrderName(List<OrderItem> orderItems) {
-        if (orderItems.size() == 1) {
-            return orderItems.get(0).getItem().getName();
+        String firstItemName = orderItems.stream()
+                .findFirst()
+                .orElseThrow(()-> new IllegalArgumentException("해당 주문에 상품이 존재하지 않습니다. "))
+                .getItem()
+                .getName();
+        if (orderItems.size() == DEFAULT_COUNT) {
+            return firstItemName;
         }
-        return orderItems.get(0).getItem().getName() + AND + (orderItems.size() - DEFAULT_OFFSET) + COUNT_UNIT;
+        return firstItemName + AND + (orderItems.size() - DEFAULT_COUNT) + COUNT_UNIT;
     }
 }
