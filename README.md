@@ -37,17 +37,17 @@ http://52.78.141.17:8080/
     + 로그아웃 시 세션과 함께 삭제 V
   + 구매 기능 구현 V
     + 구매 버튼 클릭 시 디비에 저장 V
-    + 구매 버튼 클릭 시 장바구니 삭제
-  + 필요한 모든 로직에 대한 단위 테스트 작성
-  + 배포
-    + EC2에 프로젝트 설치
-    + Travis 연결
-    + Travis - AWS S3 연결
+    + 구매 버튼 클릭 시 장바구니 삭제 v
+  + 필요한 모든 로직에 대한 단위 테스트 작성 
+  + 배포 V
+    + EC2에 프로젝트 설치 V
+    + Travis 연결 V
+    + Travis - AWS S3 연결 V
   
 + 개인적인 목표
   + 코드 중복 최소화
-  + 객체지향 원칙 지키기
-  + Spring security를 이용하여 로그인 및 세션관리 구현하기
+  + 객체지향적 설계 원칙 지키기
+  + Spring security를 이용하여 로그인 및 세션 관리 구현하기
   
 Screenshots
 ------
@@ -60,13 +60,11 @@ Database 설계
 ![database](image/database.png)  
 
 
-
-
 + 개발 환경
   + 개발 언어 : Java
   + 프레임워크 : Spring-boot, Spring-data-JPA
   + 서버 : AWS
-  + 배포 자동화 : Travis CI , AWS CodeDeploy
+  + 배포 자동화 : Travis CI, AWS S3, AWS CodeDeploy
   + 데이터베이스 : AWS RDS (MariaDB)
   + 개발 일시 : 2020/06/21 ~ 2020/07/09
   

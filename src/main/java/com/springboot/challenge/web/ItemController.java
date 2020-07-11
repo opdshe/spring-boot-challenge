@@ -25,9 +25,10 @@ public class ItemController {
     private static final String MODEL_ATTRIBUTE_ITEMS = "items";
     private static final String MODEL_ATTRIBUTE_DETAIL_ITEM = "detailItem";
     private static final String MODEL_ATTRIBUTE_PAGES = "pages";
-    private static final Integer DEFAULT_PAGE = 1;
-    private static final int NUMBER_OF_ITEMS_ON_ONE_PAGE = 20;
     private static final String SORTING_CRITERION = "sales";
+    private static final int DEFAULT_PAGE = 1;
+    private static final int NUMBER_OF_ITEMS_ON_ONE_PAGE = 20;
+
 
     private final ItemService itemService;
 
