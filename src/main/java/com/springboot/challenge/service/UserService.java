@@ -4,6 +4,7 @@ import com.springboot.challenge.domain.member.Member;
 import com.springboot.challenge.domain.member.MemberRepository;
 import com.springboot.challenge.domain.order.OrderRepository;
 import com.springboot.challenge.domain.order.Orders;
+import com.springboot.challenge.exceptions.AlreadyExistUserIdException;
 import com.springboot.challenge.exceptions.MemberMismatchException;
 import com.springboot.challenge.web.dto.MemberRegisterRequestDto;
 import com.springboot.challenge.web.dto.OrderDtoForMyPage;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -23,7 +25,10 @@ public class UserService {
     private final OrderRepository orderRepository;
 
     @Transactional
-    public Long register(MemberRegisterRequestDto memberRegisterRequestDto) {
+    public Long register(MemberRegisterRequestDto memberRegisterRequestDto) throws AlreadyExistUserIdException {
+        if (!isAvailableUserId(memberRegisterRequestDto.getUserId())) {
+            throw new AlreadyExistUserIdException(memberRegisterRequestDto.getUserId());
+        }
         return memberRepository.save(memberRegisterRequestDto.toEntity()).getId();
     }
 
@@ -46,5 +51,11 @@ public class UserService {
     @Transactional
     public List<Orders> findAllByMember(Member member) {
         return orderRepository.findAllByMember(member);
+    }
+
+    @Transactional
+    public boolean isAvailableUserId(String userId) {
+        Optional<Member> memberFindByUserId = memberRepository.findByUserId(userId);
+        return !memberFindByUserId.isPresent();
     }
 }

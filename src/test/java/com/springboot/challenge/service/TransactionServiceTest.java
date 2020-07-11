@@ -41,7 +41,7 @@ public class TransactionServiceTest {
 
     @Transactional
     @Test
-    public void 상품_구매_기능_동작_확() {
+    public void 상품_구매_기능_동작_확인() {
         //given
         Member member = Member.builder()
                 .userId("test")

@@ -23,7 +23,7 @@ public class MemberRepositoryTest extends TestCase {
     }
 
     @Test
-    public void User_등록_확인() {
+    public void Member_등록_확인() {
         //given
         Member member = Member.builder()
                 .name("heon")
