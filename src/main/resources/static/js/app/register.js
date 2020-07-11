@@ -24,8 +24,8 @@ let register = {
         }).done(function () {
             alert('회원 가입이 완료되었습니다. ');
             window.location.href = '/products';
-        }).fail(function (error) {
-            alert(JSON.stringify(error));
+        }).fail(function (err) {
+            alert(err['responseJSON']['message']);
         });
     }
 }

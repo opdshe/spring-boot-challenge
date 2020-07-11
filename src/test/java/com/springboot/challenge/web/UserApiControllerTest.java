@@ -1,6 +1,5 @@
 package com.springboot.challenge.web;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springboot.challenge.domain.member.Member;
 import com.springboot.challenge.domain.member.MemberRepository;
@@ -17,8 +16,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,6 +31,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UserApiControllerTest {
+    @Autowired
+    EntityManager entityManager;
+
     @Autowired
     WebApplicationContext context;
 
@@ -49,6 +53,7 @@ public class UserApiControllerTest {
                 .build();
     }
 
+    @Transactional
     @AfterEach
     public void cleanUp() {
         memberRepository.deleteAll();
@@ -63,6 +68,7 @@ public class UserApiControllerTest {
             .phone("01033333333")
             .build();
 
+    @Transactional
     @Test
     public void 회원가입_동작_확인() throws Exception {
         //given
@@ -81,6 +87,7 @@ public class UserApiControllerTest {
         assertThat(findMember.getUserId()).isEqualTo("testId");
     }
 
+    @Transactional
     @Test
     public void UserId_중복일_때_예외_발생_확인() throws Exception {
         //given
