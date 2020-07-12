@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -59,7 +60,7 @@ public class UserApiControllerTest {
         memberRepository.deleteAll();
     }
 
-    private static final MemberRegisterRequestDto registerRequestDto = MemberRegisterRequestDto.builder()
+    MemberRegisterRequestDto registerRequestDto = MemberRegisterRequestDto.builder()
             .name("dongheon")
             .userId("testId")
             .password("testPassword")
@@ -72,6 +73,15 @@ public class UserApiControllerTest {
     @Test
     public void 회원가입_동작_확인() throws Exception {
         //given
+        MemberRegisterRequestDto registerRequestDto = MemberRegisterRequestDto.builder()
+                .name("dongheon")
+                .userId("testId")
+                .password("testPassword")
+                .email("test@naver.com")
+                .address("경기도 수원시 우만동")
+                .phone("01033333333")
+                .build();
+
         String url = "http://localhost:" + port + "/api/v1/register";
 
         //when
@@ -91,11 +101,15 @@ public class UserApiControllerTest {
     @Test
     public void UserId_중복일_때_예외_발생_확인() throws Exception {
         //given
-        String url = "http://localhost:" + port + "/api/v1/register";
-        mvc.perform(post(url)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(new ObjectMapper().writeValueAsString(registerRequestDto)))
-                .andExpect(status().isOk());
+        MemberRegisterRequestDto registerRequestDto = MemberRegisterRequestDto.builder()
+                .name("dongheon")
+                .userId("testId")
+                .password("testPassword")
+                .email("test@naver.com")
+                .address("경기도 수원시 우만동")
+                .phone("01033333333")
+                .build();
+
         MemberRegisterRequestDto sameUserIdRequestDto = MemberRegisterRequestDto.builder()
                 .name("anotherName")
                 .userId("testId")
@@ -105,7 +119,14 @@ public class UserApiControllerTest {
                 .phone("anotherNumbers")
                 .build();
 
-        //when
+        String url = "http://localhost:" + port + "/api/v1/register";
+        mvc.perform(post(url)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(registerRequestDto)))
+                .andExpect(status().isOk());
+
+
+        //then
         assertThatExceptionOfType(AlreadyExistUserIdException.class)
                                           .isThrownBy(()->mvc.perform(post(url)
                         .contentType(MediaType.APPLICATION_JSON)

@@ -2,6 +2,7 @@ package com.springboot.challenge.web;
 
 import com.springboot.challenge.service.TransactionService;
 import com.springboot.challenge.web.dto.DetailResponseDto;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
