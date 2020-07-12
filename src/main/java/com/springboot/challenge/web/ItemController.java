@@ -3,7 +3,6 @@ package com.springboot.challenge.web;
 import com.springboot.challenge.domain.item.Category;
 import com.springboot.challenge.service.ItemService;
 import com.springboot.challenge.web.dto.ItemResponseDto;
-import com.springboot.challenge.web.util.SessionManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
