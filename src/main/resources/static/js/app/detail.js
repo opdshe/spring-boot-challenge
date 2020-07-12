@@ -21,7 +21,7 @@ let detail = {
         let data = {
             id: $('#span-item-num').val(),
             count: $('#input-count').val()
-        }
+        };
 
         $.ajax({
             type: 'POST',

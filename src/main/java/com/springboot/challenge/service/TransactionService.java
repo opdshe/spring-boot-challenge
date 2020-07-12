@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -62,6 +63,7 @@ public class TransactionService {
 
         orderItemRepository.saveAll(orderItems);
         orderRepository.save(order);
+        sessionReset(httpSession, BAG_ATTRIBUTE_NAME, new HashMap<Long, Integer>());
         return order.getId();
     }
 }

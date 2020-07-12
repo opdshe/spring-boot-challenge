@@ -20,4 +20,8 @@ public class SessionManager {
     private static boolean isAlreadyExist(HttpSession httpSession, String attributeName) {
         return httpSession.getAttribute(attributeName) != null;
     }
+
+    public static void sessionReset(HttpSession httpSession, String attributeName, Object target){
+        httpSession.setAttribute(attributeName, target);
+    }
 }
