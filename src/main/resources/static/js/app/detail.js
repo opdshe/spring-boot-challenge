@@ -28,11 +28,13 @@ let detail = {
             url: '/api/v1/insert',
             dataType: 'json',
             contentType: 'application/json; charset = utf-8',
-            data: JSON.stringify(data)
-        }).done(function () {
-            alert('해당 상품이 장바구니에 등록 되었습니다. ');
-        }).fail(function (error) {
-            alert(error['responseJSON']['message']);
+            data: JSON.stringify(data),
+            success: function () {
+                alert('해당 상품이 장바구니에 등록 되었습니다. ');
+            },
+            error: function () {
+                alert(error['responseJSON']['message']);
+            }
         });
     }
 }

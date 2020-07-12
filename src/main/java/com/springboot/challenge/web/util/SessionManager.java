@@ -7,7 +7,6 @@ public class SessionManager {
     public static final String USER_ATTRIBUTE_NAME = "user";
     public static final String PREV_PAGE_ATTRIBUTE_NAME = "prevPage";
 
-
     public static void setSessionAttribute(HttpSession httpSession, String attributeName, Object target){
         if(!isAlreadyExist(httpSession, attributeName)) {
             httpSession.setAttribute(attributeName, target);

@@ -11,8 +11,6 @@ let bag = {
             }).fail(function (error) {
                 alert(error['responseJSON']['message']);
             })
-
-
         })
     }
 }

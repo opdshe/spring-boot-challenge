@@ -39,7 +39,7 @@ public class TransactionService {
     public Long insert(DetailResponseDto responseDto, HttpSession httpSession) {
         Map<Long, Integer> bag = (Map<Long, Integer>) getSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME);
         bag.put(responseDto.getId(), bag.getOrDefault(responseDto.getId(), COUNT_OF_ITEMS_IN_EMPTY_BAG) + responseDto.getCount());
-        httpSession.setAttribute(BAG_ATTRIBUTE_NAME, bag);
+        setSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME, bag);
         return responseDto.getId();
     }
 
@@ -54,7 +54,11 @@ public class TransactionService {
         Member member = memberRepository.findByUserId(username)
                 .orElseThrow(() -> new MemberMismatchException(username));
         List<Item> items = itemRepository.findItemListByIdIn(new ArrayList<>(bag.keySet()));
+        return orderProcess(httpSession,member,items, bag);
+    }
 
+
+    private Long orderProcess(HttpSession httpSession, Member member, List<Item> items, Map<Long, Integer> bag){
         Orders order = new Orders(member);
         List<OrderItem> orderItems = items.stream()
                 .map(item-> new OrderItem(order, item, bag.get(item.getId())))
