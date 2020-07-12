@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @SpringBootTest
 public class TransactionApiControllerTest {
     @Autowired
@@ -34,6 +36,6 @@ public class TransactionApiControllerTest {
 
         //then
         Map<Long, Integer> bag = (Map<Long, Integer>) httpSession.getAttribute("bag");
-        System.out.println(bag.get(id));
+        assertThat(bag.get(id)).isEqualTo(count);
     }
 }

@@ -11,6 +11,7 @@ import com.springboot.challenge.domain.orderitem.OrderItemRepository;
 import com.springboot.challenge.exceptions.MemberMismatchException;
 import com.springboot.challenge.web.dto.DetailResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,7 +35,7 @@ public class TransactionService {
 
     @Transactional
     public Long insert(DetailResponseDto responseDto, HttpSession httpSession) {
-        Map<Long, Integer> bag = getBagSessionAttribute(httpSession);
+        Map<Long, Integer> bag = (Map<Long, Integer>) getSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME);
         bag.put(responseDto.getId(), bag.getOrDefault(responseDto.getId(), COUNT_OF_ITEMS_IN_EMPTY_BAG) + responseDto.getCount());
         httpSession.setAttribute(BAG_ATTRIBUTE_NAME, bag);
         return responseDto.getId();
@@ -42,8 +43,9 @@ public class TransactionService {
 
     @Transactional
     public Long buy(HttpSession httpSession) {
-        String username = getUserSessionAttribute(httpSession).getUsername();
-        Map<Long, Integer> bag = getBagSessionAttribute(httpSession);
+        UserDetails user = (UserDetails) getSessionAttribute(httpSession, USER_ATTRIBUTE_NAME);
+        String username = user.getUsername();
+        Map<Long, Integer> bag = (Map<Long, Integer>) getSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME);
         Member member = memberRepository.findByUserId(username)
                 .orElseThrow(() -> new MemberMismatchException(username));
         List<Item> items = itemRepository.findItemListByIdIn(new ArrayList<>(bag.keySet()));
@@ -56,7 +58,6 @@ public class TransactionService {
 
         orderItemRepository.saveAll(orderItems);
         orderRepository.save(order);
-        setBagAttributeName(httpSession);
         return order.getId();
     }
 }

@@ -2,7 +2,6 @@ package com.springboot.challenge.web;
 
 import com.springboot.challenge.service.TransactionService;
 import com.springboot.challenge.web.dto.DetailResponseDto;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +14,7 @@ import javax.servlet.http.HttpSession;
 public class TransactionApiController {
     private final TransactionService transactionService;
 
-    @PostMapping("/api/v1/auth/insert")
+    @PostMapping("/api/v1/insert")
     public Long insert(@RequestBody DetailResponseDto responseDto, HttpSession httpSession) {
         return transactionService.insert(responseDto, httpSession);
     }

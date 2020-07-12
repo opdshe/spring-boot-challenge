@@ -3,6 +3,7 @@ package com.springboot.challenge.web;
 import com.springboot.challenge.domain.item.Category;
 import com.springboot.challenge.service.ItemService;
 import com.springboot.challenge.web.dto.ItemResponseDto;
+import com.springboot.challenge.web.util.SessionManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,8 +14,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import static com.springboot.challenge.web.util.SessionManager.*;
 
 @RequiredArgsConstructor
 @Controller
@@ -34,7 +38,8 @@ public class ItemController {
 
     @GetMapping("/products")
     public String products(@RequestParam(value = REQUEST_PARAMETER_CATEGORY, required = false) Category category,
-                           @RequestParam(value = REQUEST_PARAMETER_PAGE, required = false) Integer page, Model model) {
+                           @RequestParam(value = REQUEST_PARAMETER_PAGE, required = false) Integer page,
+                           HttpSession httpSession, Model model) {
         if (page == null) {
             page = DEFAULT_PAGE;
         }
@@ -45,6 +50,7 @@ public class ItemController {
         model.addAttribute(MODEL_ATTRIBUTE_PAGES, IntStream.rangeClosed(DEFAULT_PAGE, pageFindByCategory.getTotalPages())
                 .boxed()
                 .collect(Collectors.toList()));
+        setSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME, new HashMap<Long, Integer>());
         return "products";
     }
 

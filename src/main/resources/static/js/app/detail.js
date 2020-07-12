@@ -25,14 +25,14 @@ let detail = {
 
         $.ajax({
             type: 'POST',
-            url: '/api/v1/auth/insert',
+            url: '/api/v1/insert',
             dataType: 'json',
             contentType: 'application/json; charset = utf-8',
             data: JSON.stringify(data)
         }).done(function () {
             alert('해당 상품이 장바구니에 등록 되었습니다. ');
         }).fail(function (error) {
-            alert(JSON.stringify('로그인 후 이용해 주세요'));
+            alert(JSON.stringify(error));
         });
     }
 }

@@ -18,6 +18,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static com.springboot.challenge.web.util.SessionManager.*;
+
+
 @RequiredArgsConstructor
 @Service
 public class ItemService {
@@ -42,7 +45,7 @@ public class ItemService {
 
     @Transactional
     public List<ItemResponseDto> getBagList(HttpSession httpSession) {
-        Map<Long, Integer> bag = SessionManager.getBagSessionAttribute(httpSession);
+        Map<Long, Integer> bag = (Map<Long, Integer>) getSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME);
         List<Long> itemIds = new ArrayList<>(bag.keySet());
         List<ItemResponseDto> items = getItemResponseDtosFindByIdIn(itemIds);
         items.forEach(item -> item.setExtraInfo(bag.get(item.getId())));

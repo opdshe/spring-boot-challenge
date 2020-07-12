@@ -10,6 +10,7 @@ import com.springboot.challenge.web.dto.MemberRegisterRequestDto;
 import com.springboot.challenge.web.dto.OrderDtoForMyPage;
 import com.springboot.challenge.web.util.SessionManager;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,8 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static com.springboot.challenge.web.util.SessionManager.*;
 
 @RequiredArgsConstructor
 @Service
@@ -34,7 +37,8 @@ public class UserService {
 
     @Transactional
     public List<OrderDtoForMyPage> getOrderDtosForMyPage(HttpSession httpSession){
-        String userId = SessionManager.getUserSessionAttribute(httpSession).getUsername();
+        UserDetails user = (UserDetails) getSessionAttribute(httpSession, USER_ATTRIBUTE_NAME);
+        String userId = user.getUsername();
         Member member = this.findByUserId(userId);
         List<Orders> ordersFindByMember = this.findAllByMember(member);
         return ordersFindByMember.stream()
