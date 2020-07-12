@@ -1,11 +1,11 @@
 let register = {
-    init : function() {
-        let _this =this;
-        $('#btn-register').on('click', function(){
+    init: function () {
+        let _this = this;
+        $('#btn-register').on('click', function () {
             _this.register();
         })
     },
-    register: function (){
+    register: function () {
         let data = {
             userId: $('#user_id').val(),
             password: $('#user_password').val(),
