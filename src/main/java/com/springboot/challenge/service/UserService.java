@@ -5,6 +5,7 @@ import com.springboot.challenge.domain.member.MemberRepository;
 import com.springboot.challenge.domain.order.OrderRepository;
 import com.springboot.challenge.domain.order.Orders;
 import com.springboot.challenge.exceptions.AlreadyExistUserIdException;
+import com.springboot.challenge.exceptions.DoNotHaveUserSessionAttributeException;
 import com.springboot.challenge.exceptions.MemberMismatchException;
 import com.springboot.challenge.web.dto.MemberRegisterRequestDto;
 import com.springboot.challenge.web.dto.OrderDtoForMyPage;
@@ -37,7 +38,8 @@ public class UserService {
 
     @Transactional
     public List<OrderDtoForMyPage> getOrderDtosForMyPage(HttpSession httpSession){
-        UserDetails user = (UserDetails) getSessionAttribute(httpSession, USER_ATTRIBUTE_NAME);
+        UserDetails user = (UserDetails) getSessionAttribute(httpSession, USER_ATTRIBUTE_NAME)
+                .orElseThrow(DoNotHaveUserSessionAttributeException::new);
         String userId = user.getUsername();
         Member member = this.findByUserId(userId);
         List<Orders> ordersFindByMember = this.findAllByMember(member);

@@ -18,10 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.springboot.challenge.web.util.SessionManager.*;
@@ -38,7 +35,8 @@ public class TransactionService {
 
     @Transactional
     public Long insert(DetailResponseDto responseDto, HttpSession httpSession) {
-        Map<Long, Integer> bag = (Map<Long, Integer>) getSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME);
+        Map<Long, Integer> bag = (Map<Long, Integer>) getSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME)
+                .orElseThrow(EmptyBagException::new);
         bag.put(responseDto.getId(), bag.getOrDefault(responseDto.getId(), COUNT_OF_ITEMS_IN_EMPTY_BAG) + responseDto.getCount());
         setSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME, bag);
         return responseDto.getId();
@@ -46,26 +44,26 @@ public class TransactionService {
 
     @Transactional
     public Long buy(HttpSession httpSession) throws DoNotHaveUserSessionAttributeException {
-        Map<Long, Integer> bag = (Map<Long, Integer>) getSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME);
+        Map<Long, Integer> bag = (Map<Long, Integer>) getSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME)
+                .orElseThrow(EmptyBagException::new);
         if (bag.isEmpty()) {
             throw new EmptyBagException();
         }
-        UserDetails user = (UserDetails) getSessionAttribute(httpSession, USER_ATTRIBUTE_NAME);
-        if(user == null){
-            throw new DoNotHaveUserSessionAttributeException();
-        }
+
+        UserDetails user = (UserDetails) getSessionAttribute(httpSession, USER_ATTRIBUTE_NAME)
+                .orElseThrow(DoNotHaveUserSessionAttributeException::new);
         String username = user.getUsername();
         Member member = memberRepository.findByUserId(username)
                 .orElseThrow(() -> new MemberMismatchException(username));
         List<Item> items = itemRepository.findItemListByIdIn(new ArrayList<>(bag.keySet()));
-        return orderProcess(httpSession,member,items, bag);
+        return orderProcess(httpSession, member, items, bag);
     }
 
 
-    private Long orderProcess(HttpSession httpSession, Member member, List<Item> items, Map<Long, Integer> bag){
+    private Long orderProcess(HttpSession httpSession, Member member, List<Item> items, Map<Long, Integer> bag) {
         Orders order = new Orders(member);
         List<OrderItem> orderItems = items.stream()
-                .map(item-> new OrderItem(order, item, bag.get(item.getId())))
+                .map(item -> new OrderItem(order, item, bag.get(item.getId())))
                 .collect(Collectors.toList());
         order.setOrderInfo(orderItems);
 

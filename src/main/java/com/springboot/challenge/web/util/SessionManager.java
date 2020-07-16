@@ -1,6 +1,7 @@
 package com.springboot.challenge.web.util;
 
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 public class SessionManager {
     public static final String BAG_ATTRIBUTE_NAME = "bag";
@@ -13,8 +14,8 @@ public class SessionManager {
         }
     }
 
-    public static Object getSessionAttribute(HttpSession httpSession, String attributeName) {
-        return httpSession.getAttribute(attributeName);
+    public static Optional<Object> getSessionAttribute(HttpSession httpSession, String attributeName) {
+        return (Optional<Object>) httpSession.getAttribute(attributeName);
     }
     private static boolean isAlreadyExist(HttpSession httpSession, String attributeName) {
         return httpSession.getAttribute(attributeName) != null;
