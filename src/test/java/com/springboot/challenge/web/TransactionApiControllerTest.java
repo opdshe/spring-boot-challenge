@@ -6,10 +6,7 @@ import com.springboot.challenge.domain.item.Item;
 import com.springboot.challenge.domain.item.ItemRepository;
 import com.springboot.challenge.domain.member.Member;
 import com.springboot.challenge.domain.member.MemberRepository;
-import com.springboot.challenge.domain.order.OrderRepository;
-import com.springboot.challenge.domain.order.Orders;
-import com.springboot.challenge.domain.orderitem.OrderItem;
-import com.springboot.challenge.domain.orderitem.OrderItemRepository;
+import com.springboot.challenge.exceptions.EmptyBagException;
 import com.springboot.challenge.web.dto.DetailResponseDto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -20,10 +17,10 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @SpringBootTest
 public class TransactionApiControllerTest {
@@ -35,9 +32,6 @@ public class TransactionApiControllerTest {
 
     @Autowired
     private MemberRepository memberRepository;
-
-    @Autowired
-    private OrderItemRepository orderItemRepository;
 
     @Autowired
     HttpSession httpSession;
@@ -103,5 +97,24 @@ public class TransactionApiControllerTest {
         Member memberAfterBuy = memberRepository.findByUserId(targetMember.getUserId()).get();
         String itemName = memberAfterBuy.getOrdersList().get(0).getOrderItems().get(0).getItem().getName();
         assertThat(itemName).isEqualTo("오프화이트신발");
+    }
+
+    @Test
+    void 상품구매_시_장바구니_비어있으면_예외발생() {
+        //given
+        Member mockMember = Member.builder()
+                .userId("test")
+                .password("testPassword")
+                .name("dongheon")
+                .phone("01012345678")
+                .build();
+        httpSession.setAttribute("user", new SecurityMember(mockMember));
+
+        Map<Long, Integer> bag = new HashMap<>();
+        httpSession.setAttribute("bag", bag);
+
+        //then
+        assertThatExceptionOfType(EmptyBagException.class)
+                .isThrownBy(()->transactionApiController.buy(httpSession));
     }
 }

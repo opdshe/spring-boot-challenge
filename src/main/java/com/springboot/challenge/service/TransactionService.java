@@ -9,6 +9,7 @@ import com.springboot.challenge.domain.order.Orders;
 import com.springboot.challenge.domain.orderitem.OrderItem;
 import com.springboot.challenge.domain.orderitem.OrderItemRepository;
 import com.springboot.challenge.exceptions.DoNotHaveUserSessionAttributeException;
+import com.springboot.challenge.exceptions.EmptyBagException;
 import com.springboot.challenge.exceptions.MemberMismatchException;
 import com.springboot.challenge.web.dto.DetailResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -45,12 +46,15 @@ public class TransactionService {
 
     @Transactional
     public Long buy(HttpSession httpSession) throws DoNotHaveUserSessionAttributeException {
+        Map<Long, Integer> bag = (Map<Long, Integer>) getSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME);
+        if (bag.isEmpty()) {
+            throw new EmptyBagException();
+        }
         UserDetails user = (UserDetails) getSessionAttribute(httpSession, USER_ATTRIBUTE_NAME);
         if(user == null){
             throw new DoNotHaveUserSessionAttributeException();
         }
         String username = user.getUsername();
-        Map<Long, Integer> bag = (Map<Long, Integer>) getSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME);
         Member member = memberRepository.findByUserId(username)
                 .orElseThrow(() -> new MemberMismatchException(username));
         List<Item> items = itemRepository.findItemListByIdIn(new ArrayList<>(bag.keySet()));

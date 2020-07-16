@@ -18,6 +18,7 @@ public class OrderDtoForMyPage {
     private final LocalDateTime orderDateTime;
 
     public OrderDtoForMyPage(Orders orders) {
+        System.out.println("this order's order_id = " +orders.getId());
         this.orderName = setOrderName(orders.getOrderItems());
         this.totalPrice = orders.getOrderItems().stream()
                 .map(OrderItem::getOrderPrice)
@@ -27,6 +28,7 @@ public class OrderDtoForMyPage {
     }
 
     private String setOrderName(List<OrderItem> orderItems) {
+        System.out.println("==========orderItemSize: " + orderItems.size());
         String firstItemName = orderItems.stream()
                 .findFirst()
                 .orElseThrow(()-> new IllegalArgumentException("해당 주문에 상품이 존재하지 않습니다. "))

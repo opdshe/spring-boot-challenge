@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/api/v1/auth/**").authenticated()
-                .antMatchers("/**").permitAll()
+                .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")
@@ -58,5 +58,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationSuccessHandler successHandler() {
         return new CustomLoginSuccessHandler();
     }
-
 }
