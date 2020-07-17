@@ -13,7 +13,7 @@ import static com.springboot.challenge.web.util.SessionManager.*;
 
 public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException{
         HttpSession httpSession = request.getSession();
         if (httpSession != null) {
             String redirectUrl = (String) getSessionAttribute(httpSession, PREV_PAGE_ATTRIBUTE_NAME)
