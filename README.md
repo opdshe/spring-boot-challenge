@@ -2,8 +2,7 @@
 spring-boot 와 spring-data-jpa를 이용한 쇼핑몰 구현하기
 
 접속 URL : 
-# http://13.124.221.140:8080/
-
+# http://13.124.221.140:9090/
 + 프로그램 기능 목록
   + 로그인
   + 회원가입
@@ -63,8 +62,8 @@ Database 설계
 + 개발 환경
   + 개발 언어 : Java
   + 프레임워크 : Spring-boot, Spring-data-JPA
-  + 서버 : AWS
-  + 배포 자동화 : Travis CI, AWS S3, AWS CodeDeploy
+  + 서버 : AWS EC2
+  + 배포 자동화 : Docker, Jenkins
   + 데이터베이스 : AWS RDS (MariaDB)
   + 개발 일시 : 2020/06/21 ~ 2020/07/09
   
