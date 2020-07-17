@@ -3,6 +3,7 @@ package com.springboot.challenge.service;
 import com.springboot.challenge.domain.item.Category;
 import com.springboot.challenge.domain.item.Item;
 import com.springboot.challenge.domain.item.ItemRepository;
+import com.springboot.challenge.exceptions.EmptyBagException;
 import com.springboot.challenge.exceptions.MemberMismatchException;
 import com.springboot.challenge.web.dto.ItemResponseDto;
 import com.springboot.challenge.web.util.SessionManager;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.springboot.challenge.web.util.SessionManager.*;
@@ -45,7 +47,8 @@ public class ItemService {
 
     @Transactional
     public List<ItemResponseDto> getBagList(HttpSession httpSession) {
-        Map<Long, Integer> bag = (Map<Long, Integer>) getSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME);
+        Map<Long, Integer> bag = (Map<Long, Integer>) getSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME)
+                .orElseThrow(()->new EmptyBagException());
         List<Long> itemIds = new ArrayList<>(bag.keySet());
         List<ItemResponseDto> items = getItemResponseDtosFindByIdIn(itemIds);
         items.forEach(item -> item.setExtraInfo(bag.get(item.getId())));

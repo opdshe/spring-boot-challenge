@@ -16,7 +16,8 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
         HttpSession httpSession = request.getSession();
         if (httpSession != null) {
-            String redirectUrl = (String) getSessionAttribute(httpSession, PREV_PAGE_ATTRIBUTE_NAME);
+            String redirectUrl = (String) getSessionAttribute(httpSession, PREV_PAGE_ATTRIBUTE_NAME)
+                    .orElseThrow(()->new IllegalArgumentException("이전 페이지 정보가 없습니다. "));
             httpSession.setAttribute(USER_ATTRIBUTE_NAME, authentication.getPrincipal());
 
             if (redirectUrl != null) {

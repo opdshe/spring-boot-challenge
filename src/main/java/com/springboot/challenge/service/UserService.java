@@ -9,7 +9,6 @@ import com.springboot.challenge.exceptions.DoNotHaveUserSessionAttributeExceptio
 import com.springboot.challenge.exceptions.MemberMismatchException;
 import com.springboot.challenge.web.dto.MemberRegisterRequestDto;
 import com.springboot.challenge.web.dto.OrderDtoForMyPage;
-import com.springboot.challenge.web.util.SessionManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
