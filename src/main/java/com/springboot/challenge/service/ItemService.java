@@ -6,7 +6,6 @@ import com.springboot.challenge.domain.item.ItemRepository;
 import com.springboot.challenge.exceptions.EmptyBagException;
 import com.springboot.challenge.exceptions.MemberMismatchException;
 import com.springboot.challenge.web.dto.ItemResponseDto;
-import com.springboot.challenge.web.util.SessionManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.springboot.challenge.web.util.SessionManager.*;
