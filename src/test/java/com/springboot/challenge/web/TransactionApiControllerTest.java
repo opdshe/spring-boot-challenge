@@ -7,6 +7,7 @@ import com.springboot.challenge.domain.item.ItemRepository;
 import com.springboot.challenge.domain.member.Member;
 import com.springboot.challenge.domain.member.MemberRepository;
 import com.springboot.challenge.exceptions.EmptyBagException;
+import com.springboot.challenge.exceptions.OverStockException;
 import com.springboot.challenge.web.dto.DetailResponseDto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -52,9 +53,12 @@ public class TransactionApiControllerTest {
         //given
         Long id = 1L;
         Integer count = 3;
+        Integer stockQuantity = 5;
+
         DetailResponseDto detailResponseDto = new DetailResponseDto();
         detailResponseDto.setId(id);
         detailResponseDto.setCount(count);
+        detailResponseDto.setStockQuantity(stockQuantity);
         httpSession.setAttribute("bag", new HashMap<Long, Integer>());
 
         //when
@@ -63,6 +67,25 @@ public class TransactionApiControllerTest {
         //then
         Map<Long, Integer> bag = (Map<Long, Integer>) httpSession.getAttribute("bag");
         assertThat(bag.get(id)).isEqualTo(count);
+    }
+
+    @Test
+    void 장바구니_추가_시_주문량이_재고보다_많으면_예외_발생() {
+        //given
+        Long id = 1L;
+        Integer count = 3;
+        Integer stockQuantity = 2;
+
+        DetailResponseDto detailResponseDto = new DetailResponseDto();
+        detailResponseDto.setId(id);
+        detailResponseDto.setCount(count);
+        detailResponseDto.setStockQuantity(stockQuantity);
+        httpSession.setAttribute("bag", new HashMap<Long, Integer>());
+
+        //then
+        assertThatExceptionOfType(OverStockException.class)
+                .isThrownBy(()->transactionApiController.insert(detailResponseDto, httpSession));
+
     }
 
     @Transactional

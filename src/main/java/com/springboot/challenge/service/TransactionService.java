@@ -35,6 +35,7 @@ public class TransactionService {
 
     @Transactional
     public Long insert(DetailResponseDto responseDto, HttpSession httpSession) {
+        responseDto.validateStockQuantity();
         Map<Long, Integer> bag = (Map<Long, Integer>) getSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME)
                 .orElseThrow(EmptyBagException::new);
         bag.put(responseDto.getId(), bag.getOrDefault(responseDto.getId(), COUNT_OF_ITEMS_IN_EMPTY_BAG) + responseDto.getCount());
