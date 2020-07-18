@@ -15,7 +15,7 @@ public class SessionManager {
     }
 
     public static Optional<Object> getSessionAttribute(HttpSession httpSession, String attributeName) {
-        return Optional.of(httpSession.getAttribute(attributeName));
+        return Optional.ofNullable(httpSession.getAttribute(attributeName));
     }
     private static boolean isAlreadyExist(HttpSession httpSession, String attributeName) {
         return httpSession.getAttribute(attributeName) != null;
