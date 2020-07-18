@@ -468,6 +468,22 @@ tr {
     border-collapse: collapse;
     text-align: center;
 }
+#div-bag-operation {
+    display: flex;
+    flex-direction: row;
+    float: right;
+    position: relative;
+    right: 13%;
+}
+#btn-delete{
+    margin-right: 1%;
+    position: relative;
+    float: inherit;
+    height: 30px;
+    width: 10%;
+    left: 89%;
+    top: 20px;
+}
 
 #btn-buy {
     position: relative;

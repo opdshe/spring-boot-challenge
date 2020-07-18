@@ -26,7 +26,7 @@ let detail = {
 
         $.ajax({
             type: 'POST',
-            url: '/api/v1/insert',
+            url: '/api/v1/bag/insert',
             dataType: 'json',
             contentType: 'application/json; charset = utf-8',
             data: JSON.stringify(data)

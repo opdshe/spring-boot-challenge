@@ -17,7 +17,7 @@
         {{#items}}
             <tr class="xans-record-">
                 <td>
-                    <input type="checkbox" id="basket_chk_id_0" name="basket_product_normal_type_normal">
+                    <input type="checkbox" name="bag-checkbox" value="{{id}}">
                 </td>
                 <td class="thumb gClearLine">
                     <img src={{thumbnail}}
@@ -42,6 +42,9 @@
         {{/items}}
         </tbody>
     </table>
-    <input id="btn-buy" type="button" value="BUY">
+    <div style="align-items: flex-end" id="div-bag-operation">
+        <input id = "btn-delete" type="button" value="DELETE">
+        <input id="btn-buy" type="button" value="BUY">
+    </div>
 </div>
 {{>layout/footer}}

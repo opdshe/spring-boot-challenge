@@ -43,6 +43,12 @@ public class TransactionService {
         return responseDto.getId();
     }
 
+    public void delete(List<Long> removalObjects, HttpSession httpSession) {
+        Map<Long, Integer> bag = (Map<Long, Integer>) getSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME)
+                .orElseThrow(EmptyBagException::new);
+        setSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME, deleteFromBag(bag, removalObjects));
+    }
+
     @Transactional
     public Long buy(HttpSession httpSession) throws DoNotHaveUserSessionAttributeException {
         Map<Long, Integer> bag = (Map<Long, Integer>) getSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME)
@@ -60,6 +66,12 @@ public class TransactionService {
         return orderProcess(httpSession, member, items, bag);
     }
 
+    private Map<Long, Integer> deleteFromBag(Map<Long, Integer> bag, List<Long> removalObjects) {
+        for (Long removalObject : removalObjects) {
+            bag.remove(removalObject);
+        }
+        return bag;
+    }
 
     private Long orderProcess(HttpSession httpSession, Member member, List<Item> items, Map<Long, Integer> bag) {
         Orders order = new Orders(member);
