@@ -39,9 +39,7 @@ spring-boot 와 spring-data-jpa를 이용한 쇼핑몰 구현하기
     + 구매 버튼 클릭 시 장바구니 삭제 v
   + 필요한 모든 로직에 대한 단위 테스트 작성 
   + 배포 V
-    + EC2에 프로젝트 설치 V
-    + Travis 연결 V
-    + Travis - AWS S3 연결 V
+    + Docker (Jenkins) 를 통한 배포 자동화
   
 + 개인적인 목표
   + 코드 중복 최소화
@@ -65,6 +63,6 @@ Database 설계
   + 서버 : AWS EC2
   + 배포 자동화 : Docker, Jenkins
   + 데이터베이스 : AWS RDS (MariaDB)
-  + 개발 일시 : 2020/06/21 ~ 2020/07/09
+  + 개발 일시 : 2020/06/21 ~ 
   
   
