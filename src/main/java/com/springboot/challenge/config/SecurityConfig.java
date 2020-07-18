@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 @RequiredArgsConstructor
 @EnableWebSecurity
@@ -33,15 +34,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/auth/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/admin/login")
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .successHandler(successHandler())
-                .failureUrl("/")
+                    .formLogin()
+                    .loginPage("/login")
+                    .loginProcessingUrl("/admin/login")
+                    .usernameParameter("username")
+                    .passwordParameter("password")
+                    .successHandler(successHandler())
+                    .failureUrl("/")
                 .and()
-                .logout();
+                    .logout()
+                    .logoutSuccessHandler(logoutSuccessHandler());
     }
 
     @Bean
@@ -57,5 +59,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public AuthenticationSuccessHandler successHandler() {
         return new CustomLoginSuccessHandler();
+    }
+
+    @Bean
+    public LogoutSuccessHandler logoutSuccessHandler() {
+        return new CustomLogoutSuccessHandler();
     }
 }
