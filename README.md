@@ -63,6 +63,6 @@ Database 설계
   + 서버 : AWS EC2
   + 배포 자동화 : Docker, Jenkins
   + 데이터베이스 : AWS RDS (MariaDB)
-  + 개발 일시 : 2020/06/21 ~ 
+  + 개발 일시 : 2020/06/21 ~ 2020/0719
   
   
