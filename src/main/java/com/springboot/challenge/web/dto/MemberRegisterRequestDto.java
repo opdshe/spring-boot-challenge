@@ -35,7 +35,8 @@ public class MemberRegisterRequestDto {
     }
 
     @Builder
-    public MemberRegisterRequestDto(String userId, String password, String name, String address, String email, String phone) {
+    public MemberRegisterRequestDto(String userId, String password, String name,
+                                    String address, String email, String phone) {
         this.userId = userId;
         this.password = password;
         this.name = name;

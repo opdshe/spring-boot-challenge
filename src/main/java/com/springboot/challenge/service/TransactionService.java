@@ -43,6 +43,7 @@ public class TransactionService {
         return responseDto.getId();
     }
 
+    @Transactional
     public void delete(List<Long> removalObjects, HttpSession httpSession) {
         Map<Long, Integer> bag = (Map<Long, Integer>) getSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME)
                 .orElseThrow(EmptyBagException::new);
@@ -73,6 +74,7 @@ public class TransactionService {
         return bag;
     }
 
+    @Transactional
     private Long orderProcess(HttpSession httpSession, Member member, List<Item> items, Map<Long, Integer> bag) {
         Orders order = new Orders(member);
         List<OrderItem> orderItems = items.stream()

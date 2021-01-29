@@ -53,20 +53,10 @@ public class UserApiControllerTest {
                 .build();
     }
 
-    @Transactional
     @AfterEach
     public void cleanUp() {
         memberRepository.deleteAll();
     }
-
-    MemberRegisterRequestDto registerRequestDto = MemberRegisterRequestDto.builder()
-            .name("dongheon")
-            .userId("testId")
-            .password("testPassword")
-            .email("test@naver.com")
-            .address("경기도 수원시 우만동")
-            .phone("01033333333")
-            .build();
 
     @Transactional
     @Test

@@ -37,8 +37,8 @@ let bag = {
         }).done(function () {
             alert('해당 상품을 장바구니에서 삭제하였습니다. ');
             window.location.href = '/bag';
-        }).fail(function (err) {
-            alert(err['responseJSON']['message']);
+        }).fail(function (error) {
+            alert(error['responseJSON']['message']);
         });
     }
 }
