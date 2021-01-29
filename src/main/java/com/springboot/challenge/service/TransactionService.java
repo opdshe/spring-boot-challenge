@@ -33,7 +33,6 @@ public class TransactionService {
     private final OrderItemRepository orderItemRepository;
     private final OrderRepository orderRepository;
 
-    @Transactional
     public Long insert(DetailResponseDto responseDto, HttpSession httpSession) {
         responseDto.validateStockQuantity();
         Map<Long, Integer> bag = (Map<Long, Integer>) getSessionAttribute(httpSession, BAG_ATTRIBUTE_NAME)

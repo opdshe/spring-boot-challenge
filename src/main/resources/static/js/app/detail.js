@@ -31,7 +31,7 @@ let detail = {
             contentType: 'application/json; charset = utf-8',
             data: JSON.stringify(data)
         }).done(function () {
-            alert('해당 상품이 장바구니에 등록 되었습니다. ');
+            window.alert('해당 상품이 장바구니에 등록 되었습니다. ');
         }).fail(function (error) {
             alert(error['responseJSON']['message']);
         })

@@ -124,12 +124,10 @@ article {
 }
 
 .page_nation .prev {
-    background: #f8f8f8 url('img/page_prev.png') no-repeat center center;
     margin-right: 7px;
 }
 
 .page_nation .next {
-    background: #f8f8f8 url('img/page_next.png') no-repeat center center;
     margin-left: 7px;
 }
 
@@ -298,7 +296,6 @@ p {
 #prddetailimg img {
     margin-top: 100px;
     position: relative;
-    float: center;
     width: 60%;
     height: 60%;
 }
@@ -494,8 +491,7 @@ tr {
     top: 20px;
 }
 
-<!--
-mypage-- >
+
 #div-mypage {
     text-align: center;
     float: right;
@@ -514,4 +510,28 @@ mypage-- >
     border-spacing: 0;
     border-collapse: collapse;
     text-align: center;
+}
+
+select {
+    /*ios대응*/
+    border-radius: 3px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-left: 5px;
+}
+
+select::-ms-expand {
+    display: none; /* 화살표 없애기 for IE10, 11*/
+}
+
+input {
+    border-color: #000000;
+    background-color: white;
+    border-width: 1px;
+    border-radius: 2px;
+}
+
+body {
+    font-family: 'Montserrat', 'Nanum Gothic', sans-serif;
 }

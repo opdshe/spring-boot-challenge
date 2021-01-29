@@ -2,3 +2,6 @@
 1595081873422|102|statement|connection 40|url jdbc:h2:mem:testdb|drop table if exists member|drop table if exists member
 1595081873424|0|statement|connection 40|url jdbc:h2:mem:testdb|drop table if exists order_item|drop table if exists order_item
 1595081873424|0|statement|connection 40|url jdbc:h2:mem:testdb|drop table if exists orders|drop table if exists orders
+1611922987840|105|statement|connection 39|url jdbc:h2:mem:testdb|drop table if exists member|drop table if exists member
+1611922987841|0|statement|connection 39|url jdbc:h2:mem:testdb|drop table if exists order_item|drop table if exists order_item
+1611922987842|0|statement|connection 39|url jdbc:h2:mem:testdb|drop table if exists orders|drop table if exists orders
