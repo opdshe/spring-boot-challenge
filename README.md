@@ -2,7 +2,6 @@
 spring-boot 와 spring-data-jpa를 이용한 쇼핑몰 구현하기
  
 # http://13.124.221.140:9090/
-## (Chrome으로 접속 권장. Safari 사용 시 css 적용 안되는 현상 발생.)
 + 프로그램 기능 목록
   + 로그인
   + 회원가입
