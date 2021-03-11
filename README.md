@@ -1,7 +1,7 @@
 # spring-boot-challenge [![Build Status](https://travis-ci.com/opdshe/spring-boot-challenge.svg?branch=master)](https://travis-ci.com/opdshe/spring-boot-challenge)
 spring-boot 와 spring-data-jpa를 이용한 쇼핑몰 구현하기
  
-# http://13.124.221.140:9090/
+# http://www.challenge.r-e.kr
 + 프로그램 기능 목록
   + 로그인
   + 회원가입
